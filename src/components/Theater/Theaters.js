@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from "axios";
 
+import {Link} from 'react-router-dom'
+
 class Theaters extends Component {
   constructor() {
     super()
@@ -11,7 +13,7 @@ class Theaters extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/theaters').then((res) => {
+    axios.get('http://localhost:4000/api/theaters').then((res) => {
       console.log(res)
       this.setState({theaters: res.data})
       console.log(this.state.theaters)
@@ -19,6 +21,17 @@ class Theaters extends Component {
       console.log(err)
     })
   }
+
+  render() {
+    let theatersList = this.state.theaters.map( (theater) => {
+      return (
+        <Link to={`/api/theaters/${theater.name}`}> {theater.name} </Link>
+
+      )
+    })
+
+  }
 }
+
 
 export default Theaters;

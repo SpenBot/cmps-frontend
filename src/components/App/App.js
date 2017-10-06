@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import axios from "axios";
 
+import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
+
 const theTheaters = [
   {
     name: "Regal Cinema",
