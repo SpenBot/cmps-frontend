@@ -23,15 +23,21 @@ class Theaters extends Component {
   }
 
   render() {
-    let theatersList = this.state.theaters.map( (theater) => {
+    const theatersList = this.state.theaters.map((theater) => {
       return (
         <Link to={`/api/theaters/${theater.name}`}> {theater.name} </Link>
-
-      )
+       )
     })
+      return (
+        <div>
+          {theatersList}
+        </div>
+      )
 
   }
-}
+
+  }
+
 
 
 export default Theaters;
