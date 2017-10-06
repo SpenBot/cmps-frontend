@@ -32,29 +32,27 @@ class App extends Component {
           <h5 className="subheading">Cinema Movie Play Schedule</h5>
         </header>
         <p className="App-intro">
-          Welcome to CMPS, Your theater and movie source for Washignton, DC!
+          Welcome to CMPS, Your theater and movie source for Washington, DC!
         </p>
 
         <div className="theaterMenu">
           <Router>
-          <select>
-            <Switch>
             <Route path="/api/theaters" render={(props) => {
                   return (
                     <div>
-                      <Theaters {...props}/>
+                      
+                      <Theaters/>
+
                     </div>
                   )
                 }}
               />
-            </Switch>
-          </select>
           </Router>
-        </div>
-        <div className="movieMenu">
 
         </div>
       </div>
+
+
 
     );
   }

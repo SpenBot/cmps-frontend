@@ -25,12 +25,16 @@ class Theaters extends Component {
   render() {
     const theatersList = this.state.theaters.map((theater) => {
       return (
-        <Link to={`/api/theaters/${theater.name}`}> {theater.name} </Link>
+        <option>
+          <Link to={`/api/theaters/${theater.name}`}> {theater.name} </Link>
+        </option>
        )
     })
       return (
         <div>
-          {theatersList}
+          <select>
+            {theatersList}
+          </select>
         </div>
       )
 
