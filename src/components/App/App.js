@@ -30,6 +30,7 @@ const theMovies = [
 
 //main landing page for search
 class App extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -38,8 +39,20 @@ class App extends Component {
     }
   }
 
-  
 
+  componentDidMount () {
+   axios.get('http://localhost:4000/theaters')
+     .then((res) => {
+       console.log(res)
+       this.setState({
+         theaters: res.data
+       })
+       console.log(this.state.theaters)
+     })
+     .catch((err) => {
+       console.log(err)
+     })
+ }
 
 
 
@@ -58,6 +71,14 @@ class App extends Component {
           Welcome to CMPS, Your theater and movie source for Washignton, DC!
         </p>
 
+        <div className="theaterMenu">
+          <select>
+            Theaters
+          </select>
+        </div>
+        <div className="movieMenu">
+
+        </div>
       </div>
     );
   }
