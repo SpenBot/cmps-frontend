@@ -1,50 +1,27 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import '../App/App.css';
+import Theaters from '../Theaters/Theaters.js'
 import axios from "axios";
 
-const theTheaters = [
-  {
-    name: "Regal Cinema",
-    address: "123 Fake Street",
-    numTheaters: 3
-  },
-  {
-    name: "VA",
-    address: "246 Fake Street",
-    numTheaters: 8
-  }
-]
 
-const theMovies = [
-  {
-    name: "Lion King",
-    rating: "PG",
-    showTime: "8:30pm"
-  },
-  {
-    name: "It",
-    rating: "R",
-    showTime: "9:30pm"
-  }
-]
+
 
 //main landing page for search
 class App extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
-      theaters: theTheaters,
-      movies: theMovies
+      // theaters: Theaters,
+      // movies: Movies
     }
   }
-
-  
-
-
 
 
   render() {
     return (
+
       <div className="App">
         <nav className="homeNav">
           <h4>Movies</h4>
@@ -58,7 +35,27 @@ class App extends Component {
           Welcome to CMPS, Your theater and movie source for Washignton, DC!
         </p>
 
+        <div className="theaterMenu">
+          <Router>
+          <select>
+            <Switch>
+            <Route path="/api/theaters" render={(props) => {
+                  return (
+                    <div>
+                      <Theaters {...props}/>
+                    </div>
+                  )
+                }}
+              />
+            </Switch>
+          </select>
+          </Router>
+        </div>
+        <div className="movieMenu">
+
+        </div>
       </div>
+
     );
   }
 }
