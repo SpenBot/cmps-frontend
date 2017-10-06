@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
 import '../App/App.css';
-// import axios from "axios";
+import axios from "axios";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <nav className="homeNav">
+          <h4>Movies</h4>
+          <h4>Theaters</h4>
+        </nav>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">CMPS</h1>
+          <h5 className="subheading">Cinema Movie Play Schedule</h5>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Welcome to CMPS, Your theater and movie source for Washignton, DC!
         </p>
+
       </div>
     );
   }
