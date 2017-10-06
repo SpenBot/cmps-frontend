@@ -40,22 +40,6 @@ class App extends Component {
   }
 
 
-  componentDidMount () {
-   axios.get('http://localhost:4000/theaters')
-     .then((res) => {
-       console.log(res)
-       this.setState({
-         theaters: res.data
-       })
-       console.log(this.state.theaters)
-     })
-     .catch((err) => {
-       console.log(err)
-     })
- }
-
-
-
   render() {
     return (
       <div className="App">
