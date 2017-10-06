@@ -2,7 +2,47 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import axios from "axios";
 
+const theTheaters = [
+  {
+    name: "Regal Cinema",
+    address: "123 Fake Street",
+    numTheaters: 3
+  },
+  {
+    name: "VA",
+    address: "246 Fake Street",
+    numTheaters: 8
+  }
+]
+
+const theMovies = [
+  {
+    name: "Lion King",
+    rating: "PG",
+    showTime: "8:30pm"
+  },
+  {
+    name: "It",
+    rating: "R",
+    showTime: "9:30pm"
+  }
+]
+
+//main landing page for search
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      theaters: theTheaters,
+      movies: theMovies
+    }
+  }
+
+
+
+
+
+
   render() {
     return (
       <div className="App">
