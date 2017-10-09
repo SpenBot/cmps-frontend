@@ -8,7 +8,6 @@ import axios from "axios";
 
 
 
-
 //main landing page for search
 class App extends Component {
 
@@ -25,6 +24,8 @@ class App extends Component {
     this.changeMovieResult = this.changeMovieResult.bind(this)
 
   }
+
+
 
   componentDidMount() {
 
@@ -51,6 +52,7 @@ class App extends Component {
   }
 
 
+
   changeTheaterResult(theaterResult) {
     this.setState({theaterResult})
   }
@@ -64,8 +66,6 @@ class App extends Component {
 
 
   render() {
-    // let movie1 = this.state.movies.findOne({name: Star Wars})
-    // console.log(`Movies 1 = ${movie1.name}`)
     return (
 
       <div className="App">
