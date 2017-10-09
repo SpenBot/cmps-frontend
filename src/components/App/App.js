@@ -37,16 +37,13 @@ class App extends Component {
 
         <div className="theaterMenu">
           <Router>
-            <Route path="/api/theaters" render={(props) => {
-                  return (
-                    <div>
-                      
-                      <Theaters/>
 
-                    </div>
-                  )
-                }}
-              />
+                    <Route path="/" render={() => {
+           return (
+             <Theaters/>
+           )
+         }}
+       />
           </Router>
 
         </div>
@@ -57,5 +54,4 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+ export default App;
