@@ -7,6 +7,7 @@ class ResultsWindow extends Component {
       return (
         <div>
           <p>{this.props.theaterResult}</p>
+          <p>{this.props.movieResult}</p>
         </div>
       )
   }

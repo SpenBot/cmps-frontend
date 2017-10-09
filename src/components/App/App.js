@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import '../App/App.css';
 import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
+import MovieSearch from '../MovieSearch/MovieSearch.js';
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
 import axios from "axios";
 
@@ -18,8 +19,11 @@ class App extends Component {
       movies: [],
       user: null,
       theaterResult: null,
+      movieResult: null
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
+    this.changeMovieResult = this.changeMovieResult.bind(this)
+
   }
 
   componentDidMount() {
@@ -32,9 +36,23 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:4000/api/movies').then((res) => {
+      console.log(res)
+      this.setState({movies: res.data})
+      console.log(this.state.movies)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
 
   changeTheaterResult(theaterResult) {
     this.setState({theaterResult})
+  }
+
+  changeMovieResult(movieResult) {
+    this.setState({movieResult})
   }
 
 
@@ -67,7 +85,7 @@ class App extends Component {
               <Route path="/" render={() => {
                     return (
                       <div>
-                        {/* <MovieSearch /> */}
+                        <MovieSearch changeMovieResult={this.changeMovieResult} movies={this.state.movies}/>
 
                         <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
 
@@ -77,8 +95,6 @@ class App extends Component {
                     )
                   }}
                 />
-
-
 
           </Router>
 
