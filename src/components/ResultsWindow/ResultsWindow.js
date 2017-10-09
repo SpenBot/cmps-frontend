@@ -53,7 +53,6 @@ class ResultsWindow extends Component {
               {this.state.movie && this.state.movie.show_3}
               <br/>
 
-
           </div>
 
 
