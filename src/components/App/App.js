@@ -27,23 +27,27 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/api/theaters').then((res) => {
-      console.log(res)
-      this.setState({theaters: res.data})
-      console.log(this.state.theaters)
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
 
-  componentDidMount() {
-    axios.get('http://localhost:4000/api/movies').then((res) => {
-      console.log(res)
-      this.setState({movies: res.data})
-      console.log(this.state.movies)
-    }).catch((err) => {
-      console.log(err)
-    })
+    axios.get('http://localhost:4000/api/theaters')
+      .then((res) => {
+        console.log(res)
+        this.setState({theaters: res.data})
+        console.log(this.state.theaters)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+      axios.get('http://localhost:4000/api/movies')
+        .then((res) => {
+          console.log(res)
+          this.setState({movies: res.data})
+          console.log(this.state.movies)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
   }
 
 
@@ -60,6 +64,8 @@ class App extends Component {
 
 
   render() {
+    // let movie1 = this.state.movies.findOne({name: Star Wars})
+    // console.log(`Movies 1 = ${movie1.name}`)
     return (
 
       <div className="App">
