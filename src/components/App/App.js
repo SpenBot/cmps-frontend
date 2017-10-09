@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
-import '../App/App.css';
+import axios from "axios";
+
 import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
 import MovieSearch from '../MovieSearch/MovieSearch.js';
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
-import axios from "axios";
+import Layout from '../Layout/Layout.js';
 
+import '../App/App.css';
 
 
 //main landing page for search
@@ -22,7 +24,6 @@ class App extends Component {
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
     this.changeMovieResult = this.changeMovieResult.bind(this)
-
   }
 
 
@@ -70,46 +71,36 @@ class App extends Component {
 
       <div className="App">
 
-        <nav className="homeNav">
-          <h4>Movies</h4>
-          <h4>Theaters</h4>
-        </nav>
+        <Layout />
 
-        <header className="App-header">
-          <h1 className="App-title">CMPS</h1>
-          <h5 className="subheading">Cinema Movie Play Schedule</h5>
-        </header>
-        <p className="App-intro">
-          Welcome to CMPS, Your theater and movie source for Washington, DC!
-        </p>
-
-
-        <div className="theaterMenu">
           <Router>
-
 
               <Route path="/" render={() => {
                     return (
                       <div>
                         <MovieSearch changeMovieResult={this.changeMovieResult} movies={this.state.movies}/>
-
                         <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
-
-                        <ResultsWindow theaterResult={this.state.theaterResult}/>
-
+                        <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult}/>
                       </div>
                     )
-                  }}
-                />
+                }}
+              />
 
           </Router>
 
-        </div>
       </div>
 
 
 
     );
   }
+
+
 }
- export default App;
+
+
+export default App;
+
+
+
+//

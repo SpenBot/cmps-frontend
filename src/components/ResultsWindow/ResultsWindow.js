@@ -7,28 +7,59 @@ class ResultsWindow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      theater: null
+      theater: null,
+      movie: null
     }
   }
 
   componentWillReceiveProps (newProps) {
+
     axios.get(`http://localhost:4000/api/theaters/${newProps.theaterResult}`)
       .then(theater => {
         this.setState({theater: theater.data})
     })
+
+    axios.get(`http://localhost:4000/api/movies/${newProps.movieResult}`)
+      .then(movie => {
+        this.setState({movie: movie.data})
+    })
+
+
   }
 
   render() {
+
+      console.log(`Theater State = ${this.state.theater}`)
+      console.log(`Movie state = ${this.state.movie}`)
+
       return (
-        <div>
-            {this.state.theater && this.state.theater.name}
-            <br/>
-            {this.state.theater && this.state.theater.address}
-            <br/>
-        </div>
+
+
+          <div>
+
+              <br/>
+              {this.state.theater && this.state.theater.name}
+              <br/>
+              {this.state.theater && this.state.theater.address}
+              <br/>
+
+              <br/>
+              {this.state.movie && this.state.movie.title}
+              <br/>
+              {this.state.movie && this.state.movie.show_1}
+              <br/>
+              {this.state.movie && this.state.movie.show_2}
+              <br/>
+              {this.state.movie && this.state.movie.show_3}
+              <br/>
+
+
+          </div>
+
+
       )
   }
-  
+
 
 }
 

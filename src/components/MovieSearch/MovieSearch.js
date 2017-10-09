@@ -15,7 +15,7 @@ class MovieSearch extends Component {
     const moviesList = movies.map((movie) => {
       return (
         <option>
-          <Link to={`/api/movies/${movie.name}`}> {movie.name} </Link>
+          <Link to={`/api/movies/${movie.title}`}> {movie.title} </Link>
         </option>
        )
          console.log({moviesList})

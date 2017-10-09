@@ -1,13 +1,8 @@
-.App {
+.Layout {
   text-align: center;
 }
 
-
-
-
-
-
-/*.App-header {
+.Layout-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
@@ -19,15 +14,15 @@
   background-color: #222;
 }
 
-.App-title {
-  font-size: 1.5em;
+.Layout-title {
+  /*font-size: 1.5em;*/
 }
 
-.App-intro {
+.Layout-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+@keyframes Layout-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}*/
+}
