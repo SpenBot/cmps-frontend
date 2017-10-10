@@ -19,7 +19,7 @@ class ResultsWindow extends Component {
         this.setState({theater: theater.data})
     })
 
-    axios.get(`http://cmps-backend.herokuapp.com/api/movies/${newProps.movieResult}`)
+    axios.get(`https://cmps-backend.herokuapp.com/api/movies/${newProps.movieResult}`)
       .then(movie => {
         this.setState({movie: movie.data})
     })
