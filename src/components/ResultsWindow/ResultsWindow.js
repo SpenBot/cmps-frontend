@@ -17,11 +17,9 @@ class ResultsWindow extends Component {
 
 
   componentWillReceiveProps (newProps) {
-
-
-let newMovie = this.props.movies.filter(movieId => movieId.tmsId === this.props.movies)[0]
-this.setState({movie: newMovie})
-
+    let newMovie = this.props.movies.filter(movieId => movieId.tmsId === this.props.movies)[0]
+    this.setState({movie: newMovie})
+    console.log(`newMovie = ${newMovie}`)
     }
 
 
@@ -33,16 +31,11 @@ this.setState({movie: newMovie})
       console.log(`Movie state = ${this.state.movie}`)
 
       return (
-
-
           <div>
             <br/>
               {this.state.movie && this.state.movie.title}
             <br/>
-
-
           </div>
-
       )
   }
 

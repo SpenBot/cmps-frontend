@@ -12,8 +12,12 @@ import UserPage from '../UserPage/UserPage.js';
 import '../App/App.css';
 
 
+
+
+
 //main landing page for search
 class App extends Component {
+
 
   constructor(props) {
     super(props)
@@ -31,7 +35,9 @@ class App extends Component {
 
 
 
+
   componentDidMount() {
+
     axios.get('https://localhost:4000/api/theaters').then((res) => {
       console.log(res)
       this.setState({theaters: res.data})
@@ -47,31 +53,27 @@ class App extends Component {
     })
 
 
-
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
-
        .then((res) => {
          console.log(res)
          this.setState({movies: res.data})
          console.log(this.state.movies)
+       })
+       .catch((err) => {
+         console.log(err)
      })
-     .catch((err) => {
-       console.log(err)
-     })
-
-
 
 
      axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-
        .then((res) => {
          this.setState({user: res.data})
-     })
-     .catch((err) => {
-       console.log(err)
+       })
+       .catch((err) => {
+         console.log(err)
      })
 
   }
+
 
 
 
@@ -87,8 +89,8 @@ class App extends Component {
 
 
 
-  render() {
 
+  render() {
 
     let moviesApi = this.state.apiMovies.map((movie) => {
       return (
@@ -97,6 +99,7 @@ class App extends Component {
 
     }  )
 
+
     return (
 
       <Router>
@@ -104,9 +107,6 @@ class App extends Component {
         <div className="App">
 
           <Layout />
-
-
-
 
             <Switch>
 
@@ -127,10 +127,6 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-
-
-
-
 
     );
   }
