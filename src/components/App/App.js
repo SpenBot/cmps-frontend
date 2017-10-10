@@ -30,6 +30,28 @@ class App extends Component {
     }).catch((err) => {
       console.log(err)
     })
+
+    axios.get('http://cmps-backend.herokuapp.com/api/movies')
+       .then((res) => {
+         console.log(res)
+         this.setState({movies: res.data})
+         console.log(this.state.movies)
+     })
+     .catch((err) => {
+       console.log(err)
+     })
+
+     axios.get('http://cmps-backend.herokuapp.com/api/users/MovieGuy999')
+       .then((res) => {
+         this.setState({user: res.data})
+     })
+     .catch((err) => {
+       console.log(err)
+     })
+
+
+
+
   }
 
 
