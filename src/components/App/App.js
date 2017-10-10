@@ -22,7 +22,7 @@ class App extends Component {
       movies: [],
       user: null,
       theaterResult: null,
-      movieResult: null
+      movieId: null
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
     this.changeMovieResult = this.changeMovieResult.bind(this)
@@ -92,7 +92,7 @@ class App extends Component {
                       <div>
                         <MovieSearch changeMovieResult={this.changeMovieResult} movies={this.state.movies}/>
                         <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
-                        <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult}/>
+                        <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult} movies={this.state.movies}/>
                         <UserSidebar user={this.state.user}/>
                       </div>
                     )

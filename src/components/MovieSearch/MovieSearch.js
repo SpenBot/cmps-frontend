@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 class MovieSearch extends Component {
 
   handleChange(e) {
-    let movieResult = e.target.value
-    this.props.changeMovieResult(movieResult)
+    let movieId = e.target.value
+    this.props.changeMovieResult(movieId)
   }
 
   render() {
@@ -14,8 +14,8 @@ class MovieSearch extends Component {
 
     const moviesList = movies.map((movie) => {
       return (
-        <option>
-          <Link to={`/api/movies/${movie.title}`}> {movie.title} </Link>
+        <option value={movie.tmsId}>
+          {movie.title}
         </option>
        )
          console.log({moviesList})

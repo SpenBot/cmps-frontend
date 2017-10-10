@@ -12,20 +12,31 @@ class ResultsWindow extends Component {
     }
   }
 
+
+
+
+
   componentWillReceiveProps (newProps) {
 
-    axios.get(`https://cmps-backend.herokuapp.com/api/theaters/${newProps.theaterResult}`)
-      .then(theater => {
-        this.setState({theater: theater.data})
-    })
 
-    axios.get(`https://cmps-backend.herokuapp.com/api/movies/${newProps.movieResult}`)
-      .then(movie => {
-        this.setState({movie: movie.data})
-    })
+    let newMovie = this.props.movies.filter(movieId => movieId.tmsId === this.props.movies)[0]
+    this.setState({movie: newMovie})
 
+    // axios.get(`https://cmps-backend.herokuapp.com/api/theaters/${newProps.theaterResult}`)
+    //   .then(theater => {
+    //     this.setState({theater: theater.data})
+    // })
+    //
+    // axios.get(`https://cmps-backend.herokuapp.com/api/movies/${newProps.movieResult}`)
+    //   .then(movie => {
+    //     this.setState({movie: movie.data})
+    // })
 
   }
+
+
+
+
 
   render() {
 
