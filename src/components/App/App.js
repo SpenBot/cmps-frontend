@@ -22,7 +22,8 @@ class App extends Component {
       movies: [],
       user: null,
       theaterResult: null,
-      movieResult: null
+      movieResult: null,
+      apiMovies: []
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
     this.changeMovieResult = this.changeMovieResult.bind(this)
@@ -31,7 +32,7 @@ class App extends Component {
 
 
   componentDidMount() {
-    axios.get('https://cmps-backend.herokuapp.com/api/theaters').then((res) => {
+    axios.get('https://localhost:4000/api/theaters').then((res) => {
       console.log(res)
       this.setState({theaters: res.data})
       console.log(this.state.theaters)
@@ -40,6 +41,10 @@ class App extends Component {
     })
 
 
+    axios.get('http://data.tmsapi.com/v1.1/movies/showings?startDate=2017-10-10&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne')
+    .then((res) => {
+      this.setState({apiMovies: res.data})
+    })
 
 
 
@@ -83,6 +88,15 @@ class App extends Component {
 
 
   render() {
+
+
+    let moviesApi = this.state.apiMovies.map((movie) => {
+      return (
+        movie.title
+      )
+
+    }  )
+
     return (
 
       <Router>
@@ -91,6 +105,9 @@ class App extends Component {
 
           <Layout />
 
+
+
+
             <Switch>
 
               <Route path="/userpage" component={UserPage} />
@@ -98,7 +115,7 @@ class App extends Component {
               <Route path="/" render={() => {
                     return (
                       <div>
-                        <MovieSearch changeMovieResult={this.changeMovieResult} movies={this.state.movies}/>
+                        <MovieSearch changeMovieResult={this.changeMovieResult} apiMovies={this.state.apiMovies}/>
                         <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
                         <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult}/>
                         <UserSidebar user={this.state.user}/>

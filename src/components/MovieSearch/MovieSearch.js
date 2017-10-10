@@ -10,12 +10,14 @@ class MovieSearch extends Component {
 
   render() {
 
-    let movies = this.props.movies
+    let movies = this.props.apiMovies
 
     const moviesList = movies.map((movie) => {
       return (
         <option>
-          <Link to={`/api/movies/${movie.title}`}> {movie.title} </Link>
+          {/* <Link to={`/api/movies/${movie.title}`}> {movie.title} </Link> */}
+
+          {movie.title}
         </option>
        )
          console.log({moviesList})
@@ -23,6 +25,7 @@ class MovieSearch extends Component {
       return (
         <div>
           <select onChange={this.handleChange.bind(this)}>
+
             {moviesList}
           </select>
 
