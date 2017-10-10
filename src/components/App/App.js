@@ -29,27 +29,13 @@ class App extends Component {
 
 
   componentDidMount() {
-
-    axios.get('http://localhost:4000/api/theaters')
-      .then((res) => {
-        console.log(res)
-        this.setState({theaters: res.data})
-        console.log(this.state.theaters)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-
-      axios.get('http://localhost:4000/api/movies')
-        .then((res) => {
-          console.log(res)
-          this.setState({movies: res.data})
-          console.log(this.state.movies)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-
+    axios.get('https://cmps-backend.herokuapp.com/api/theaters').then((res) => {
+      console.log(res)
+      this.setState({theaters: res.data})
+      console.log(this.state.theaters)
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
 
