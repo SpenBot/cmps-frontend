@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom'
 
 class TheaterSearch extends Component {
 
-  handleChange(e) {
+
+
+  handleChange(e){
+    e.preventDefault()
     let theaterResult = e.target.value
     this.props.changeTheaterResult(theaterResult)
   }

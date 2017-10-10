@@ -55,7 +55,6 @@ class ResultsWindow extends Component {
 
           </div>
 
-
       )
   }
 
