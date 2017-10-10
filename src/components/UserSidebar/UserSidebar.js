@@ -9,15 +9,11 @@ class UserSidebar extends Component {
     return (
     <div className="userSidebar">
 
-      <h3>This is the User Sidebar</h3>
+      <p>Sign Up</p>
+        <form>
+          <input value="username" />
+        </form>
 
-      <p className="bold">If Logged-Out</p>
-      <p>Log-In and Sign-Up</p>
-      <br/>
-
-      <p className="bold">If Logged-In</p>
-      <p>username, Log-Out</p>
-      <p>maybe recently favorited, or just number of favorite theaters or movies</p>
 
     </div>
     )

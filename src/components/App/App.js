@@ -12,8 +12,12 @@ import UserPage from '../UserPage/UserPage.js';
 import '../App/App.css';
 
 
+
+
+
 //main landing page for search
 class App extends Component {
+
 
   constructor(props) {
     super(props)
@@ -31,7 +35,9 @@ class App extends Component {
 
 
 
+
   componentDidMount() {
+
     axios.get('https://localhost:4000/api/theaters').then((res) => {
       console.log(res)
       this.setState({theaters: res.data})
@@ -47,31 +53,27 @@ class App extends Component {
     })
 
 
-
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
-
        .then((res) => {
          console.log(res)
          this.setState({movies: res.data})
          console.log(this.state.movies)
+       })
+       .catch((err) => {
+         console.log(err)
      })
-     .catch((err) => {
-       console.log(err)
-     })
 
 
-
-
-     axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-
-       .then((res) => {
-         this.setState({user: res.data})
-     })
-     .catch((err) => {
-       console.log(err)
-     })
+    //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
+    //    .then((res) => {
+    //      this.setState({user: res.data})
+    //    })
+    //    .catch((err) => {
+    //      console.log(err)
+    //  })
 
   }
+
 
 
 
@@ -87,8 +89,8 @@ class App extends Component {
 
 
 
-  render() {
 
+  render() {
 
     let moviesApi = this.state.apiMovies.map((movie) => {
       return (
@@ -96,6 +98,7 @@ class App extends Component {
       )
 
     }  )
+
 
     return (
 
@@ -105,9 +108,6 @@ class App extends Component {
 
           <Layout />
 
-
-
-
             <Switch>
 
               <Route path="/userpage" component={UserPage} />
@@ -116,8 +116,8 @@ class App extends Component {
                     return (
                       <div>
                         <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
-                        <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
-                        <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} movies={this.state.movies}/>
+                        {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
+                        <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
                         <UserSidebar user={this.state.user}/>
                       </div>
                     )
@@ -127,10 +127,6 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-
-
-
-
 
     );
   }
