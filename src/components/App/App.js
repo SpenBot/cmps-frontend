@@ -31,7 +31,7 @@ class App extends Component {
 
 
   componentDidMount() {
-    axios.get('http://localhost:4000/api/theaters').then((res) => {
+    axios.get('https://cmps-backend.herokuapp.com/api/theaters').then((res) => {
       console.log(res)
       this.setState({theaters: res.data})
       console.log(this.state.theaters)
@@ -40,7 +40,7 @@ class App extends Component {
     })
 
 
-    axios.get('http://localhost:4000/api/movies')
+    axios.get('https://cmps-backend.herokuapp.com/api/movies')
        .then((res) => {
          console.log(res)
          this.setState({movies: res.data})
@@ -50,7 +50,7 @@ class App extends Component {
        console.log(err)
      })
 
-     axios.get('http://localhost:4000/api/users/MovieGuy999')
+     axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
        .then((res) => {
          this.setState({user: res.data})
      })
