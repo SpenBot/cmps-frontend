@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
-import '../App/App.css';
-import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
-import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
 import axios from "axios";
 
+import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
+import MovieSearch from '../MovieSearch/MovieSearch.js';
+import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
+import Layout from '../Layout/Layout.js';
+import UserSidebar from '../UserSidebar/UserSidebar.js';
+import UserPage from '../UserPage/UserPage.js';
 
+import '../App/App.css';
 
 
 //main landing page for search
@@ -18,9 +22,13 @@ class App extends Component {
       movies: [],
       user: null,
       theaterResult: null,
+      movieResult: null
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
+    this.changeMovieResult = this.changeMovieResult.bind(this)
   }
+
+
 
   componentDidMount() {
     axios.get('https://cmps-backend.herokuapp.com/api/theaters').then((res) => {
@@ -55,8 +63,13 @@ class App extends Component {
   }
 
 
+
   changeTheaterResult(theaterResult) {
     this.setState({theaterResult})
+  }
+
+  changeMovieResult(movieResult) {
+    this.setState({movieResult})
   }
 
 
@@ -66,51 +79,45 @@ class App extends Component {
   render() {
     return (
 
-      <div className="App">
+      <Router>
 
-        <nav className="homeNav">
-          <h4>Movies</h4>
-          <h4>Theaters</h4>
-        </nav>
+        <div className="App">
 
-        <header className="App-header">
-          <h1 className="App-title">CMPS</h1>
-          <h5 className="subheading">Cinema Movie Play Schedule</h5>
-        </header>
-        <p className="App-intro">
-          Welcome to CMPS, Your theater and movie source for Washington, DC!
-        </p>
+          <Layout />
 
+            <Switch>
 
-        <div className="theaterMenu">
-          <Router>
-
+              <Route path="/userpage" component={UserPage} />
 
               <Route path="/" render={() => {
                     return (
                       <div>
-                        {/* <MovieSearch /> */}
-
+                        <MovieSearch changeMovieResult={this.changeMovieResult} movies={this.state.movies}/>
                         <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
-
-                        <ResultsWindow theaterResult={this.state.theaterResult}/>
-
+                        <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult}/>
+                        <UserSidebar user={this.state.user}/>
                       </div>
                     )
-                  }}
-                />
+                }}
+              />
+
+            </Switch>
+          </div>
+        </Router>
 
 
-
-          </Router>
-
-        </div>
-      </div>
 
 
 
     );
   }
+
+
 }
 
+
 export default App;
+
+
+
+//

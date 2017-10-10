@@ -5,17 +5,11 @@ class TheaterSearch extends Component {
 
 
 
-
   handleChange(e){
     e.preventDefault()
     let theaterResult = e.target.value
     this.props.changeTheaterResult(theaterResult)
   }
-
-
-
-
-
 
   render() {
 
@@ -38,15 +32,6 @@ class TheaterSearch extends Component {
         </div>
       )
   }
-
-
-
-
-
 }
-
-
-
-
 
 export default TheaterSearch;

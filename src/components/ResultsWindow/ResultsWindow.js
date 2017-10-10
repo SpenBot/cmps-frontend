@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import axios from "axios";
 
 class ResultsWindow extends Component {
@@ -8,39 +8,57 @@ class ResultsWindow extends Component {
     super(props)
     this.state = {
       theater: null,
-      theaterName: null
+      movie: null
     }
-
-    this.setState({theaterName: this.props.theaterResult})
-
   }
 
+  componentWillReceiveProps (newProps) {
 
-
-  componentDidMount() {
-    // let urlName = theaterName.replace(/\s/, "%20")
-
-    axios.get(`http://localhost:4000/api/theaters/${this.state.theaterName}`).then((res) => {
-      this.setState({theater: res.data})
+    axios.get(`http://localhost:4000/api/theaters/${newProps.theaterResult}`)
+      .then(theater => {
+        this.setState({theater: theater.data})
     })
+
+    axios.get(`http://localhost:4000/api/movies/${newProps.movieResult}`)
+      .then(movie => {
+        this.setState({movie: movie.data})
+    })
+
+
   }
-
-
-
-
-
 
   render() {
-      // console.log(`http://localhost:4000/api/theaters/${this.state.theaterName}`)
-      // console.log(`http://localhost:4000/api/theaters/${this.props.theaterResult}`)
-      console.log(this.state.theaterName)
+
+      console.log(`Theater State = ${this.state.theater}`)
+      console.log(`Movie state = ${this.state.movie}`)
+
       return (
-        <div>
-          <p>{this.props.theaterResult}</p>
-          {/* <p>{this.state.theater.address}</p> */}
-        </div>
+
+
+          <div>
+
+              <br/>
+              {this.state.theater && this.state.theater.name}
+              <br/>
+              {this.state.theater && this.state.theater.address}
+              <br/>
+
+              <br/>
+              {this.state.movie && this.state.movie.title}
+              <br/>
+              {this.state.movie && this.state.movie.show_1}
+              <br/>
+              {this.state.movie && this.state.movie.show_2}
+              <br/>
+              {this.state.movie && this.state.movie.show_3}
+              <br/>
+
+          </div>
+
       )
   }
+
+
 }
 
 export default ResultsWindow;
