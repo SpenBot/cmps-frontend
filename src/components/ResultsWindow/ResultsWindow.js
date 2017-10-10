@@ -14,12 +14,12 @@ class ResultsWindow extends Component {
 
   componentWillReceiveProps (newProps) {
 
-    axios.get(`http://localhost:4000/api/theaters/${newProps.theaterResult}`)
+    axios.get(`https://cmps-backend.herokuapp.com/api/theaters/${newProps.theaterResult}`)
       .then(theater => {
         this.setState({theater: theater.data})
     })
 
-    axios.get(`http://localhost:4000/api/movies/${newProps.movieResult}`)
+    axios.get(`https://cmps-backend.herokuapp.com/api/movies/${newProps.movieResult}`)
       .then(movie => {
         this.setState({movie: movie.data})
     })
