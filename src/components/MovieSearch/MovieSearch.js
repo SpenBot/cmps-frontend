@@ -10,7 +10,7 @@ class MovieSearch extends Component {
 
   render() {
 
-    let movies = this.props.movies
+    let movies = this.props.apiMovies
 
     const moviesList = movies.map((movie) => {
       return (
@@ -23,6 +23,7 @@ class MovieSearch extends Component {
       return (
         <div>
           <select onChange={this.handleChange.bind(this)}>
+
             {moviesList}
           </select>
 
