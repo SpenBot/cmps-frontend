@@ -5,7 +5,7 @@ class MovieSearch extends Component {
 
   handleChange(e) {
     let movieId = e.target.value
-    this.props.changeMovieResult(movieId)
+    this.props.changeMovieId(movieId)
   }
 
   render() {
@@ -15,7 +15,7 @@ class MovieSearch extends Component {
     const moviesList = movies.map((movie) => {
       return (
         <option value={movie.tmsId}>
-          {movie.title}
+            {movie.title}
         </option>
        )
          console.log({moviesList})

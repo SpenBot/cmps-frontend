@@ -19,50 +19,27 @@ class ResultsWindow extends Component {
   componentWillReceiveProps (newProps) {
 
 
-    let newMovie = this.props.movies.filter(movieId => movieId.tmsId === this.props.movies)[0]
-    this.setState({movie: newMovie})
+let newMovie = this.props.movies.filter(movieId => movieId.tmsId === this.props.movies)[0]
+this.setState({movie: newMovie})
 
-    // axios.get(`https://cmps-backend.herokuapp.com/api/theaters/${newProps.theaterResult}`)
-    //   .then(theater => {
-    //     this.setState({theater: theater.data})
-    // })
-    //
-    // axios.get(`https://cmps-backend.herokuapp.com/api/movies/${newProps.movieResult}`)
-    //   .then(movie => {
-    //     this.setState({movie: movie.data})
-    // })
-
-  }
+    }
 
 
 
 
 
   render() {
-
-      console.log(`Theater State = ${this.state.theater}`)
+      console.log(`Movie Id = ${this.props.movieId}`)
       console.log(`Movie state = ${this.state.movie}`)
 
       return (
 
 
           <div>
-
-              <br/>
-              {this.state.theater && this.state.theater.name}
-              <br/>
-              {this.state.theater && this.state.theater.address}
-              <br/>
-
-              <br/>
+            <br/>
               {this.state.movie && this.state.movie.title}
-              <br/>
-              {this.state.movie && this.state.movie.show_1}
-              <br/>
-              {this.state.movie && this.state.movie.show_2}
-              <br/>
-              {this.state.movie && this.state.movie.show_3}
-              <br/>
+            <br/>
+
 
           </div>
 

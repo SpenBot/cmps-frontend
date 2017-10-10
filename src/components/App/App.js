@@ -23,10 +23,10 @@ class App extends Component {
       user: null,
       theaterResult: null,
       movieId: null,
-      apiMovies: null
+      apiMovies: []
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
-    this.changeMovieResult = this.changeMovieResult.bind(this)
+    this.changeMovieId = this.changeMovieId.bind(this)
   }
 
 
@@ -79,8 +79,8 @@ class App extends Component {
     this.setState({theaterResult})
   }
 
-  changeMovieResult(movieResult) {
-    this.setState({movieResult})
+  changeMovieId(movieId) {
+    this.setState({movieId})
   }
 
 
@@ -115,9 +115,9 @@ class App extends Component {
               <Route path="/" render={() => {
                     return (
                       <div>
-                        <MovieSearch changeMovieResult={this.changeMovieResult} apiMovies={this.state.apiMovies}/>
+                        <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
                         <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
-                        <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult} movies={this.state.movies}/>
+                        <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} movies={this.state.movies}/>
                         <UserSidebar user={this.state.user}/>
                       </div>
                     )
