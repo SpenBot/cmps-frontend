@@ -39,6 +39,7 @@ class App extends Component {
       console.log(err)
     })
 
+
     axios.get('http://cmps-backend.herokuapp.com/api/movies')
        .then((res) => {
          console.log(res)
@@ -56,9 +57,6 @@ class App extends Component {
      .catch((err) => {
        console.log(err)
      })
-
-
-
 
   }
 
