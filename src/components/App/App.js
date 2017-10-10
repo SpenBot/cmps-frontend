@@ -6,6 +6,8 @@ import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
 import MovieSearch from '../MovieSearch/MovieSearch.js';
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
 import Layout from '../Layout/Layout.js';
+import UserSidebar from '../UserSidebar/UserSidebar.js';
+import UserPage from '../UserPage/UserPage.js';
 
 import '../App/App.css';
 
@@ -50,6 +52,15 @@ class App extends Component {
         console.log(err)
       })
 
+      axios.get('http://localhost:4000/api/users/MovieGuy999')
+        .then((res) => {
+          this.setState({user: res.data})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+
   }
 
 
@@ -69,11 +80,15 @@ class App extends Component {
   render() {
     return (
 
-      <div className="App">
+      <Router>
 
-        <Layout />
+        <div className="App">
 
-          <Router>
+          <Layout />
+
+            <Switch>
+
+              <Route path="/userpage" component={UserPage} />
 
               <Route path="/" render={() => {
                     return (
@@ -81,14 +96,17 @@ class App extends Component {
                         <MovieSearch changeMovieResult={this.changeMovieResult} movies={this.state.movies}/>
                         <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
                         <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult}/>
+                        <UserSidebar user={this.state.user}/>
                       </div>
                     )
                 }}
               />
 
-          </Router>
+            </Switch>
+          </div>
+        </Router>
 
-      </div>
+
 
 
 

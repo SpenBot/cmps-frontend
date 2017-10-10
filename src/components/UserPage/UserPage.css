@@ -1,0 +1,10 @@
+
+.userPage {
+  margin: 0 auto;
+  padding-top: 50px;
+  text-align: center;
+  height: 600px;
+  width: 600px;
+  background-color: red;
+  color: white;
+}
