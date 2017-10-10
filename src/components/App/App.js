@@ -64,13 +64,13 @@ class App extends Component {
      })
 
 
-     axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-       .then((res) => {
-         this.setState({user: res.data})
-       })
-       .catch((err) => {
-         console.log(err)
-     })
+    //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
+    //    .then((res) => {
+    //      this.setState({user: res.data})
+    //    })
+    //    .catch((err) => {
+    //      console.log(err)
+    //  })
 
   }
 
@@ -116,8 +116,8 @@ class App extends Component {
                     return (
                       <div>
                         <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
-                        <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
-                        <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} movies={this.state.movies}/>
+                        {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
+                        <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
                         <UserSidebar user={this.state.user}/>
                       </div>
                     )
