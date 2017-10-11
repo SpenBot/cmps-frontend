@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import axios from "axios";
 
-import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
-import MovieSearch from '../MovieSearch/MovieSearch.js';
+// import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
+// import MovieSearch from '../MovieSearch/MovieSearch.js';
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
 import Layout from '../Layout/Layout.js';
 import UserSidebar from '../UserSidebar/UserSidebar.js';
@@ -70,8 +70,8 @@ class App extends Component {
               <Route path="/" render={(props) => {
                     return (
                       <div>
-                        <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
-                        {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
+                        {/* <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/> */}
+
                         <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
                         <UserSidebar
                           {...props}

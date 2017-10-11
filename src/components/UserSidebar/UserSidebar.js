@@ -9,10 +9,13 @@ class UserSidebar extends Component {
     super(props);
     this.state = {
       user: {
-        username: '',
-        photo_url: ''
+        username: null,
+        photo_url: null
       },
-      newUser: null
+      newUser: {
+        username: null,
+        photo_url: null
+      }
     }
 
     this.handleChange = this.handleChange.bind(this);

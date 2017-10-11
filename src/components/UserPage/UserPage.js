@@ -22,12 +22,18 @@ class UserPage extends Component {
   }
 
   componentDidMount () {
-      axios.get('https://localhost:4000/api/users/username').then((res) => {
+    const {username} = this.state.user // const username = this.state.user.username
+
+    if (username) {
+      axios.get(`http://localhost:4000/api/users/${username}`).then((res) => {
+        console.log("userpage", res.data);
         this.setState({user: res.data})
       }).catch((err) => {
         console.log(err)
       })
     }
+  }
+
     handleChange(e) {
       console.log(e.target);
       this.setState({
@@ -48,6 +54,8 @@ class UserPage extends Component {
 
 
   render() {
+    console.log(this.state);
+
     // console.log(`Movie Id = ${this.props.username}`)
     // console.log(`Movie state = ${this.state.username}`
     return (
