@@ -25,14 +25,18 @@ class App extends Component {
     this.state = {
       theaters: [],
       movies: [],
-      user: [],
+      user: null,
       theaterResult: null,
       movieId: null,
-      apiMovies: []
+      apiMovies: [],
+      searchPhrase: null,
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
     this.changeMovieId = this.changeMovieId.bind(this)
+    this.logOutUser = this.logOutUser.bind(this)
   }
+
+
 
 
 
@@ -70,8 +74,18 @@ class App extends Component {
          console.log(err)
      })
 
+     axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
+        .then((res) => {
+          this.setState({user: res.data})
+          console.log(`User = ${this.state.user.username}`)
+        })
 
   }
+
+
+
+
+
 
 
 
@@ -84,20 +98,38 @@ class App extends Component {
     this.setState({movieId})
   }
 
+  logOutUser(e) {
+    e.preventDefault();
+    this.setState({user: null})
+    console.log("User logged out.")
+  }
+
+  signInUser(e) {
+    e.preventDefault()
+    axios.get(`https://cmps-backend.herokuapp.com/api/users/${this.state.searchPhrase}`)
+      .then((res) => {
+        this.setState({user: res.data})
+        console.log(`User ${this.state.user.username} signed in.`)
+      })
+    }
+
+  handleSearchInput(e) {
+    this.setState({
+      searchPhrase: e.target.value
+    })
+  }
+
+
+
+
+
+
 
 
 
 
 
   render() {
-
-    let moviesApi = this.state.apiMovies.map((movie) => {
-      return (
-        movie.title
-      )
-
-    }  )
-
 
     return (
 
@@ -122,9 +154,39 @@ class App extends Component {
                     return (
                       <div>
                         <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
-                        {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
                         <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
-                        <UserSidebar user={this.state.user}/>
+                        <UserSidebar user={this.state.user} logOutUser={this.logOutUser}/>
+
+
+
+
+                        {/* /////////// sign in button ////////////// */}
+                        <br/>
+                        <h3>Sign In</h3>
+                        <form onSubmit={(e) => this.signInUser(e)}>
+                          <textarea onChange={(e) => this.handleSearchInput(e)}></textarea>
+                          <input type="submit" value="Sign In"/>
+                        </form>
+                        {/* /////////// sign in button ////////////// */}
+
+
+
+
+
+
+
+
+
+                        {/* /////////// sign out button ////////////// */}
+                        <br/>
+                        <h3>{this.state.user && this.state.user.username}</h3>
+                        <br/>
+                        <form onSubmit={(e) => this.logOutUser(e)}>
+                          <input type="submit" value="Sign Out"/>
+                        </form>
+                        {/* /////////// sign out button ////////////// */}
+
+
 
                       </div>
                     )
