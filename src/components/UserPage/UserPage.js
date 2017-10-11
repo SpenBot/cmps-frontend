@@ -45,10 +45,11 @@ class UserPage extends Component {
 
       <h2>This is the User Page</h2>
 
-      <p>{this.props.user.username}</p>
-      <img src={this.props.user.photo_url} alt='Mug Shot'/>
+
+      {/* <img src={this.props.user.photo_url} alt='Mug Shot'/> */}
 
       <form onSubmit={this.handleSubmit}>
+        <p>Sign Up!</p>
         <label>
           Name:
           <input name="username" type="text" value={this.state.user.username} onChange={this.handleChange} />

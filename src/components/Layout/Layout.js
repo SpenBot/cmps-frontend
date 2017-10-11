@@ -7,7 +7,7 @@ class Layout extends Component {
 
   render() {
       return (
-        <div className="Layout">
+        <div id="layout"  className="Layout">
 
         <header className="Layout-header">
           <h1 className="Layout-title">CMPS</h1>

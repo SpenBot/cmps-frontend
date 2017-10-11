@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import axios from "axios";
-
+import moment from 'moment';
 import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
 import MovieSearch from '../MovieSearch/MovieSearch.js';
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
 import Layout from '../Layout/Layout.js';
 import UserSidebar from '../UserSidebar/UserSidebar.js';
 import UserPage from '../UserPage/UserPage.js';
-
 import '../App/App.css';
 
 //main landing page for search
@@ -19,11 +18,15 @@ class App extends Component {
     this.state = {
       theaters: [],
       movies: [],
-      user: [],
+      user: null,
       theaterResult: null,
       movieId: null,
-      apiMovies: []
+      apiMovies: [],
+      searchPhrase: null,
     }
+    this.changeTheaterResult = this.changeTheaterResult.bind(this)
+    this.changeMovieId = this.changeMovieId.bind(this)
+    this.logOutUser = this.logOutUser.bind(this)
   }
 
   componentDidMount() {
@@ -34,12 +37,15 @@ class App extends Component {
           console.log(err)
     })
 
+    new Date()
+       console.log(new Date())
+       let currentDate = moment(new Date()).format('YYYY-MM-DD')
+       console.log(`Current date is ${currentDate}`)
 
-    axios.get('http://data.tmsapi.com/v1.1/movies/showings?startDate=2017-10-11&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne')
-    .then((res) => {
-      this.setState({apiMovies: res.data})
-    })
-
+    axios.get(`http://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne`)
+       .then((res) => {
+         this.setState({apiMovies: res.data})
+       })
 
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
        .then((res) => {
@@ -51,14 +57,43 @@ class App extends Component {
          console.log(err)
      })
 
-  render() {
+     axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
+        .then((res) => {
+          this.setState({user: res.data})
+          console.log(`User = ${this.state.user.username}`)
+        })
+}
 
-    let moviesApi = this.state.apiMovies.map((movie) => {
-      return (
-        movie.title
-      )
+  changeTheaterResult(theaterResult) {
+    this.setState({theaterResult})
+  }
+
+  changeMovieId(movieId) {
+    this.setState({movieId})
+  }
+
+  logOutUser(e) {
+    e.preventDefault();
+    this.setState({user: null})
+    console.log("User logged out.")
+  }
+
+  signInUser(e) {
+    e.preventDefault()
+    axios.get(`https://cmps-backend.herokuapp.com/api/users/${this.state.searchPhrase}`)
+      .then((res) => {
+        this.setState({user: res.data})
+        console.log(`User ${this.state.user.username} signed in.`)
+      })
+    }
+
+  handleSearchInput(e) {
+    this.setState({
+      searchPhrase: e.target.value
     })
   }
+
+  render() {
 
     return (
 
@@ -79,14 +114,29 @@ class App extends Component {
             }}
           />
 
-              <Route path="/" render={() => {
+              <Route path="/" render={(props) => {
                     return (
                       <div>
                         <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
-                        {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
                         <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
-                        <UserSidebar user={this.state.user}/>
+                        <UserSidebar {...props} user={this.state.user} logOutUser={this.logOutUser}/>
+                      {/* /////////// sign in button ////////////// */}
+                        <br/>
+                        <h3>Sign In</h3>
+                        <form onSubmit={(e) => this.signInUser(e)}>
+                          <textarea onChange={(e) => this.handleSearchInput(e)}></textarea>
+                          <input type="submit" value="Sign In"/>
+                        </form>
+                        {/* /////////// sign in button ////////////// */}
 
+                        {/* /////////// sign out button ////////////// */}
+                        <br/>
+                        <h3>{this.state.user && this.state.user.username}</h3>
+                        <br/>
+                        <form onSubmit={(e) => this.logOutUser(e)}>
+                          <input type="submit" value="Sign Out"/>
+                        </form>
+                        {/* /////////// sign out button ////////////// */}
                       </div>
                     )
                 }}

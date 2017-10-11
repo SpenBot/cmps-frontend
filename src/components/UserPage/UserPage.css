@@ -1,10 +1,11 @@
 
 .userPage {
   margin: 0 auto;
-  padding-top: 50px;
+  padding-top: 30px;
   text-align: center;
-  height: 600px;
-  width: 600px;
-  background-color: #C70D0A;
-  color: white;
+  height: 300px;
+  width: 300px;
+  background-color: rgb(100, 0, 5);
+  color: black;
+  font-family: 'Rye', cursive;
 }
