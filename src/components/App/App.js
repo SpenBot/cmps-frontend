@@ -12,8 +12,12 @@ import UserPage from '../UserPage/UserPage.js';
 import '../App/App.css';
 
 
+
+
+
 //main landing page for search
 class App extends Component {
+
 
   constructor(props) {
     super(props)
@@ -22,16 +26,19 @@ class App extends Component {
       movies: [],
       user: [],
       theaterResult: null,
-      movieResult: null
+      movieId: null,
+      apiMovies: []
     }
     this.changeTheaterResult = this.changeTheaterResult.bind(this)
-    this.changeMovieResult = this.changeMovieResult.bind(this)
+    this.changeMovieId = this.changeMovieId.bind(this)
   }
 
 
 
+
   componentDidMount() {
-    axios.get('https://cmps-backend.herokuapp.com/api/theaters').then((res) => {
+
+    axios.get('https://localhost:4000/api/theaters').then((res) => {
       console.log(res)
       this.setState({theaters: res.data})
       console.log(this.state.theaters)
@@ -40,14 +47,20 @@ class App extends Component {
     })
 
 
+    axios.get('http://data.tmsapi.com/v1.1/movies/showings?startDate=2017-10-11&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne')
+    .then((res) => {
+      this.setState({apiMovies: res.data})
+    })
+
+
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
        .then((res) => {
          console.log(res)
          this.setState({movies: res.data})
          console.log(this.state.movies)
-     })
-     .catch((err) => {
-       console.log(err)
+       })
+       .catch((err) => {
+         console.log(err)
      })
 
     //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
@@ -62,19 +75,30 @@ class App extends Component {
 
 
 
+
   changeTheaterResult(theaterResult) {
     this.setState({theaterResult})
   }
 
-  changeMovieResult(movieResult) {
-    this.setState({movieResult})
+  changeMovieId(movieId) {
+    this.setState({movieId})
   }
+
 
 
 
 
 
   render() {
+
+    let moviesApi = this.state.apiMovies.map((movie) => {
+      return (
+        movie.title
+      )
+
+    }  )
+
+
     return (
 
       <Router>
@@ -97,9 +121,9 @@ class App extends Component {
               <Route path="/" render={() => {
                     return (
                       <div>
-                        <MovieSearch changeMovieResult={this.changeMovieResult} movies={this.state.movies}/>
-                        <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/>
-                        <ResultsWindow theaterResult={this.state.theaterResult} movieResult={this.state.movieResult}/>
+                        <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
+                        {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
+                        <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
                         <UserSidebar user={this.state.user}/>
 
                       </div>
@@ -110,6 +134,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
+
     );
   }
 }

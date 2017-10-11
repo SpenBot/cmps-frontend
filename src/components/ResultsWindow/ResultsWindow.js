@@ -12,49 +12,56 @@ class ResultsWindow extends Component {
     }
   }
 
+
+
+
+
+  // componentWillReceiveProps (newProps) {
+  //   let newMovie = this.props.apiMovies.filter(movieId => movieId.tmsId === this.props.apiMovies)[0]
+  //   this.setState({movie: newMovie})
+  //   console.log(`newMovie = ${newMovie}`)
+  //   }
+
+
   componentWillReceiveProps (newProps) {
-
-    axios.get(`https://cmps-backend.herokuapp.com/api/theaters/${newProps.theaterResult}`)
-      .then(theater => {
-        this.setState({theater: theater.data})
-    })
-
-    axios.get(`https://cmps-backend.herokuapp.com/api/movies/${newProps.movieResult}`)
-      .then(movie => {
-        this.setState({movie: movie.data})
-    })
-
-
+    let newMovie = this.props.apiMovies.find(movieId => movieId.tmsId === newProps.movieId)
+    this.setState({movie: newMovie})
+    console.log(`newMovie = ${newMovie}`)
   }
 
-  render() {
 
-      console.log(`Theater State = ${this.state.theater}`)
+
+  render() {
+      console.log(`Movie Id = ${this.props.movieId}`)
       console.log(`Movie state = ${this.state.movie}`)
 
-      return (
 
+      let theatersOfMovie = ""
 
+      if (this.state.movie) {
+        theatersOfMovie = this.state.movie.showtimes.map((showtime) => {
+        return (
           <div>
-
-              <br/>
-              {this.state.theater && this.state.theater.name}
-              <br/>
-              {this.state.theater && this.state.theater.address}
-              <br/>
-
-              <br/>
-              {this.state.movie && this.state.movie.title}
-              <br/>
-              {this.state.movie && this.state.movie.show_1}
-              <br/>
-              {this.state.movie && this.state.movie.show_2}
-              <br/>
-              {this.state.movie && this.state.movie.show_3}
-              <br/>
-
+          <h4>{showtime.theatre.name}</h4>
+          <h4>{showtime.dateTime}</h4>
           </div>
+        )
+      })}
 
+
+
+      return (
+          <div>
+            <br/>
+              {this.state.movie && this.state.movie.title}
+            <br/>
+              {this.state.movie && this.state.movie.releaseYear}
+            <br/>
+            {this.state.movie && this.state.movie.directors}
+            <br/>
+            {theatersOfMovie}
+            <br/>
+          </div>
       )
   }
 

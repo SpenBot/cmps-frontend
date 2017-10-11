@@ -27,6 +27,7 @@ class UserSidebar extends Component {
     }, ()=>console.log(this.state))
   }
 
+
   handleSubmit(e) {
     e.preventDefault();
     axios.post("http://localhost:4000/api/users", {
@@ -34,8 +35,6 @@ class UserSidebar extends Component {
       photo_url: this.state.user.photo_url
     }).then(newUser => console.log("newUser is:", newUser))
   }
-
-
 
 
   render() {
