@@ -8,7 +8,7 @@ class UserSidebar extends Component {
     super(props);
     this.state = {
       user: {
-        name: '',
+        username: '',
         photo_url: ''
       }
     }
@@ -27,12 +27,12 @@ class UserSidebar extends Component {
     }, ()=>console.log(this.state))
   }
 
-    handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    axios.post("/api/users", {
-      name: this.state.user.name,
+    axios.post("http://localhost:4000/api/users", {
+      username: this.state.user.username,
       photo_url: this.state.user.photo_url
-    })
+    }).then(newUser => console.log("newUser is:", newUser))
   }
 
 
@@ -45,12 +45,12 @@ class UserSidebar extends Component {
         <h4>Sign Up!</h4>
         <label>
           Name:
-          <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+          <input name="username" type="text" value={this.state.name} onChange={this.handleChange} />
         </label>
           <br/>
         <label>
           Image Link:
-          <input photo="photo_url" type="text" value={this.state.photo_url} onChange={this.handleChange} />
+          <input name="photo_url" type="text" value={this.state.user.photo_url} onChange={this.handleChange} />
         </label>
         <br/>
           <input type="submit" value="Submit" />

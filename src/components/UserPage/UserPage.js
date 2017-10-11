@@ -12,7 +12,7 @@ class UserPage extends Component {
     super(props);
     this.state = {
       user: {
-        name: '',
+        username: '',
         photo_url: ''
       }
     }
@@ -24,17 +24,17 @@ class UserPage extends Component {
     handleChange(e) {
       console.log(e.target);
       this.setState({
-        user:{
-        ...this.state.user,
-        [e.target.name]:e.target.value
-      }
+        user: {
+          ...this.state.user,
+          [e.target.name]:e.target.value
+       }
     }, ()=>console.log(this.state))
   }
 
     handleSubmit(e) {
     e.preventDefault();
-    axios.post("/api/users", {
-      name: this.state.user.name,
+    axios.post("http://localhost:4000/api/users", {
+      username: this.state.user.username,
       photo_url: this.state.user.photo_url
     })
   }
@@ -47,17 +47,17 @@ class UserPage extends Component {
       <h2>This is the User Page</h2>
 
       <p>{this.props.user.username}</p>
-      <img src={this.props.user.photo_url}/>
+      <img src={this.props.user.photo_url} alt='Mug Shot'/>
 
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+          <input name="username" type="text" value={this.state.user.username} onChange={this.handleChange} />
         </label>
           <br/>
         <label>
           Image Link:
-          <input photo="photo_url" type="text" value={this.state.photo_url} onChange={this.handleChange} />
+          <input name="photo_url" type="text" value={this.state.user.photo_url} onChange={this.handleChange} />
         </label>
         <br/>
           <input type="submit" value="Submit" />
