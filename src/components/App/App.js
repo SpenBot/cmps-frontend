@@ -63,13 +63,6 @@ class App extends Component {
          console.log(err)
      })
 
-    //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-    //    .then((res) => {
-    //      this.setState({user: res.data})
-    //  })
-    //  .catch((err) => {
-    //    console.log(err)
-    //  })
 
   }
 
