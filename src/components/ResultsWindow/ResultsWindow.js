@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
+import '../Layout/Layout.css'
 import axios from "axios";
 
 class ResultsWindow extends Component {
@@ -51,7 +52,7 @@ class ResultsWindow extends Component {
 
 
       return (
-          <div>
+          <div id='list'>
             <br/>
               {this.state.movie && this.state.movie.title}
             <br/>

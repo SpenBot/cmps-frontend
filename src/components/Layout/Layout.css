@@ -1,32 +1,67 @@
+
+
+
 .Layout {
   text-align: center;
+  font-size: 21px;
 }
 
 .Layout-header {
-  background-color: #C70D0A;
+  background-color: rgb(129, 0, 5);
   height: 150px;
   padding: 20px;
   color: white;
+  font-family: 'Rye', cursive;
 }
 
 .homeNav {
   font-size: 20px;
+  font-family: 'Rye', cursive;
+
 }
 
 a {
   margin: 40px;
-  color: green;
+  color: black;
 }
 
 .Layout-title {
   /*font-size: 1.5em;*/
+  font-family: 'Rye', cursive;
 }
 
 .Layout-intro {
   font-size: large;
+  font-family: 'Rye', cursive;
 }
 
 @keyframes Layout-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+#drop-down {
+  border: 2px solid black;
+  font-size: 16px;
+ height: 26px;
+ width: 350px;
+ font-family: 'Rye', cursive;
+}
+
+#value {
+  font-size: 16px;
+  font-family: 'Rye', cursive;
+}
+
+#list {
+  font-family: 'Rye', cursive;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+body {
+  background-image: url("http://www.pngmart.com/files/3/Popcorn-Transparent-Background.png");
+  background-repeat: no-repeat;
+
 }
