@@ -28,6 +28,8 @@ class UserSidebar extends Component {
   }
 
 
+
+
   handleSubmit(e) {
     e.preventDefault();
     axios.post("http://localhost:4000/api/users", {
@@ -37,8 +39,12 @@ class UserSidebar extends Component {
   }
 
 
+
+
   render() {
     return (
+
+
     <div className="userSidebar">
       <form onSubmit={this.handleSubmit}>
         <h4>Sign Up!</h4>
@@ -54,6 +60,12 @@ class UserSidebar extends Component {
         <br/>
           <input type="submit" value="Submit" />
       </form>
+
+
+
+
+
+
     </div>
 
     )
