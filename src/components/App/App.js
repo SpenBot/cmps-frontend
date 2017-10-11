@@ -24,7 +24,10 @@ class App extends Component {
     this.state = {
       theaters: [],
       movies: [],
-      user: [],
+      user: {
+        username: null,
+        photo_url: null
+      },
       theaterResult: null,
       movieId: null,
       apiMovies: []
