@@ -11,13 +11,8 @@ import UserPage from '../UserPage/UserPage.js';
 
 import '../App/App.css';
 
-
-
-
-
 //main landing page for search
 class App extends Component {
-
 
   constructor(props) {
     super(props)
@@ -29,21 +24,14 @@ class App extends Component {
       movieId: null,
       apiMovies: []
     }
-    this.changeTheaterResult = this.changeTheaterResult.bind(this)
-    this.changeMovieId = this.changeMovieId.bind(this)
   }
-
-
-
 
   componentDidMount() {
 
     axios.get('https://localhost:4000/api/theaters').then((res) => {
-      console.log(res)
       this.setState({theaters: res.data})
-      console.log(this.state.theaters)
-    }).catch((err) => {
-      console.log(err)
+        }).catch((err) => {
+          console.log(err)
     })
 
 
@@ -63,41 +51,14 @@ class App extends Component {
          console.log(err)
      })
 
-    //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-    //    .then((res) => {
-    //      this.setState({user: res.data})
-    //  })
-    //  .catch((err) => {
-    //    console.log(err)
-    //  })
-
-  }
-
-
-
-
-  changeTheaterResult(theaterResult) {
-    this.setState({theaterResult})
-  }
-
-  changeMovieId(movieId) {
-    this.setState({movieId})
-  }
-
-
-
-
-
-
   render() {
 
     let moviesApi = this.state.apiMovies.map((movie) => {
       return (
         movie.title
       )
-
-    }  )
-
+    })
+  }
 
     return (
 
@@ -109,7 +70,7 @@ class App extends Component {
 
             <Switch>
 
-              <Route path="/userpage" render={(props) => {
+              <Route path="/users" render={(props) => {
                 return(
                 <div>
                   <UserPage user={this.state.user}/>

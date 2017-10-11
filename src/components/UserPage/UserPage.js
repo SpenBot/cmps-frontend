@@ -5,7 +5,6 @@ import {
   Route
 } from 'react-router-dom'
 import './UserPage.css';
-import FavoriteTheaters from '../FavoriteTheaters/FavoriteTheaters.js'
 
 class UserPage extends Component {
   constructor(props) {
