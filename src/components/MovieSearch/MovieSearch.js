@@ -23,7 +23,6 @@ class MovieSearch extends Component {
       return (
         <div>
           <select onChange={this.handleChange.bind(this)}>
-
             {moviesList}
           </select>
 
