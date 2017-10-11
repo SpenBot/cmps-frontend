@@ -14,7 +14,7 @@ class MovieSearch extends Component {
 
     const moviesList = movies.map((movie) => {
       return (
-        <option value={movie.tmsId}>
+        <option id="value" value={movie.tmsId}>
             {movie.title}
         </option>
        )
@@ -22,7 +22,9 @@ class MovieSearch extends Component {
     })
       return (
         <div>
-          <select onChange={this.handleChange.bind(this)}>
+
+          <select id="drop-down" onChange={this.handleChange.bind(this)}>
+
             {moviesList}
           </select>
 

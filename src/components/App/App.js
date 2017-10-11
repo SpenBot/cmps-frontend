@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import axios from "axios";
+
 import moment from 'moment';
 
 import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
@@ -48,6 +49,7 @@ class App extends Component {
     })
 
 
+
     new Date()
        console.log(new Date())
        let currentDate = moment(new Date()).format('YYYY-MM-DD')
@@ -58,6 +60,7 @@ class App extends Component {
        .then((res) => {
          this.setState({apiMovies: res.data})
        })
+
 
 
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
