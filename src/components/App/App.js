@@ -24,7 +24,7 @@ class App extends Component {
     this.state = {
       theaters: [],
       movies: [],
-      user: null,
+      user: [],
       theaterResult: null,
       movieId: null,
       apiMovies: []
@@ -63,13 +63,12 @@ class App extends Component {
          console.log(err)
      })
 
-
     //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
     //    .then((res) => {
     //      this.setState({user: res.data})
-    //    })
-    //    .catch((err) => {
-    //      console.log(err)
+    //  })
+    //  .catch((err) => {
+    //    console.log(err)
     //  })
 
   }
@@ -110,7 +109,14 @@ class App extends Component {
 
             <Switch>
 
-              <Route path="/userpage" component={UserPage} />
+              <Route path="/userpage" render={(props) => {
+                return(
+                <div>
+                  <UserPage user={this.state.user}/>
+                </div>
+              )
+            }}
+          />
 
               <Route path="/" render={() => {
                     return (
@@ -119,6 +125,7 @@ class App extends Component {
                         {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
                         <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
                         <UserSidebar user={this.state.user}/>
+
                       </div>
                     )
                 }}
@@ -130,13 +137,5 @@ class App extends Component {
 
     );
   }
-
-
 }
-
-
 export default App;
-
-
-
-//
