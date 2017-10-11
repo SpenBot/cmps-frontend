@@ -47,7 +47,7 @@ class App extends Component {
     })
 
 
-    axios.get('http://data.tmsapi.com/v1.1/movies/showings?startDate=2017-10-10&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne')
+    axios.get('http://data.tmsapi.com/v1.1/movies/showings?startDate=2017-10-11&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne')
     .then((res) => {
       this.setState({apiMovies: res.data})
     })
