@@ -5,7 +5,7 @@ import {
   Route
 } from 'react-router-dom'
 import './UserPage.css';
-import FavoriteTheaters from '../FavoriteTheaters/FavoriteTheaters.js'
+import UserSidebar from '../UserSidebar/UserSidebar.js'
 
 class UserPage extends Component {
   constructor(props) {
@@ -21,6 +21,13 @@ class UserPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount () {
+      axios.get('https://localhost:4000/api/users/username').then((res) => {
+        this.setState({user: res.data})
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
     handleChange(e) {
       console.log(e.target);
       this.setState({
@@ -41,9 +48,11 @@ class UserPage extends Component {
 
 
   render() {
+    // console.log(`Movie Id = ${this.props.username}`)
+    // console.log(`Movie state = ${this.state.username}`
     return (
-    <div className="userPage">
 
+    <div className="userPage">
       <h2>This is the User Page</h2>
 
       <p>{this.props.user.username}</p>
@@ -62,6 +71,7 @@ class UserPage extends Component {
         <br/>
           <input type="submit" value="Submit" />
       </form>
+
 
       <p>Edit</p>
       <p>Delete</p>

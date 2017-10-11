@@ -29,8 +29,6 @@ class App extends Component {
       movieId: null,
       apiMovies: []
     }
-    this.changeTheaterResult = this.changeTheaterResult.bind(this)
-    this.changeMovieId = this.changeMovieId.bind(this)
   }
 
 
@@ -38,56 +36,11 @@ class App extends Component {
 
   componentDidMount() {
 
-    axios.get('https://localhost:4000/api/theaters').then((res) => {
-      console.log(res)
-      this.setState({theaters: res.data})
-      console.log(this.state.theaters)
-    }).catch((err) => {
-      console.log(err)
-    })
-
-
     axios.get('http://data.tmsapi.com/v1.1/movies/showings?startDate=2017-10-11&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne')
     .then((res) => {
       this.setState({apiMovies: res.data})
     })
-
-
-    axios.get('https://cmps-backend.herokuapp.com/api/movies')
-       .then((res) => {
-         console.log(res)
-         this.setState({movies: res.data})
-         console.log(this.state.movies)
-       })
-       .catch((err) => {
-         console.log(err)
-     })
-
-    //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-    //    .then((res) => {
-    //      this.setState({user: res.data})
-    //  })
-    //  .catch((err) => {
-    //    console.log(err)
-    //  })
-
   }
-
-
-
-
-  changeTheaterResult(theaterResult) {
-    this.setState({theaterResult})
-  }
-
-  changeMovieId(movieId) {
-    this.setState({movieId})
-  }
-
-
-
-
-
 
   render() {
 
@@ -95,21 +48,14 @@ class App extends Component {
       return (
         movie.title
       )
-
-    }  )
-
+    })
 
     return (
-
       <Router>
-
         <div className="App">
-
           <Layout />
-
             <Switch>
-
-              <Route path="/userpage" render={(props) => {
+              <Route path="/users" render={(props) => {
                 return(
                 <div>
                   <UserPage user={this.state.user}/>
@@ -118,13 +64,15 @@ class App extends Component {
             }}
           />
 
-              <Route path="/" render={() => {
+              <Route path="/" render={(props) => {
                     return (
                       <div>
                         <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
                         {/* <TheaterSearch changeTheaterResult={this.changeTheaterResult} theaters={this.state.theaters}/> */}
                         <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
-                        <UserSidebar user={this.state.user}/>
+                        <UserSidebar
+                          {...props}
+                          user={this.state.user}/>
 
                       </div>
                     )

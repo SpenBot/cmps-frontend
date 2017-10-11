@@ -16,7 +16,7 @@ class Layout extends Component {
 
         <nav className="homeNav">
           <a href='/'>Home</a>
-          <a href='userpage'>Profile</a>
+          <a href='users'>Profile</a>
         </nav>
 
         <p className="Layout-intro">
