@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import axios from "axios";
-import moment from "moment";
+
+import moment from 'moment';
+
 import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
 import MovieSearch from '../MovieSearch/MovieSearch.js';
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
@@ -47,10 +49,18 @@ class App extends Component {
     })
 
 
-    axios.get('http://data.tmsapi.com/v1.1/movies/showings?startDate=2017-10-11&zip=20005&api_key=nhg4dwe7n5rj5xbxfnxms88b')
-    .then((res) => {
-      this.setState({apiMovies: res.data})
-    })
+
+    new Date()
+       console.log(new Date())
+       let currentDate = moment(new Date()).format('YYYY-MM-DD')
+       console.log(`Current date is ${currentDate}`)
+
+
+    axios.get(`http://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne`)
+       .then((res) => {
+         this.setState({apiMovies: res.data})
+       })
+
 
 
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
@@ -63,13 +73,6 @@ class App extends Component {
          console.log(err)
      })
 
-    //  axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-    //    .then((res) => {
-    //      this.setState({user: res.data})
-    //  })
-    //  .catch((err) => {
-    //    console.log(err)
-    //  })
 
   }
 

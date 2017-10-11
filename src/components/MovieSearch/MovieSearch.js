@@ -22,7 +22,9 @@ class MovieSearch extends Component {
     })
       return (
         <div>
+
           <select id="drop-down" onChange={this.handleChange.bind(this)}>
+
             {moviesList}
           </select>
 
