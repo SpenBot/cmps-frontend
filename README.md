@@ -1,6 +1,7 @@
 
 #README
 
+
 ##Description
 CMPS (Cinema Movie Play Schedule) is a full-stack application that pulls movies
 playing in Washington, DC and their showtimes from tmsapi.com, displaying them
