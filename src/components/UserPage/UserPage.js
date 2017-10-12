@@ -50,7 +50,7 @@ class UserPage extends Component {
 
   handleUpdate(e) {
     e.preventDefault();
-    axios.put(`http://localhost:4000/api/users/${this.state.username}`, {
+    axios.put(`https://cmps-backend.herokuapp.com/api/users/${this.state.username}`, {
       username: this.state.usernameEdit,
       photo_url: this.state.photo_urlEdit,
       password: this.state.passwordEdit
