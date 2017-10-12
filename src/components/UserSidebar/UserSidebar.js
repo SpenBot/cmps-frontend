@@ -1,10 +1,6 @@
-
-
 import React, {Component} from 'react';
 import './UserSidebar.css';
 import axios from 'axios';
-import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
-import UserPage from '../UserPage/UserPage.js'
 
 class UserSidebar extends Component {
   constructor(props) {
@@ -39,9 +35,6 @@ class UserSidebar extends Component {
     }).then(() => {
       this.props.history.push('/users')
       })
-
-    // .then(newUser => <Redirect to="/users" />)
-
   }
 
   render() {
@@ -52,18 +45,17 @@ class UserSidebar extends Component {
             Name:
             <input name="username" type="text" value={this.state.user.username} onChange={this.handleChange}/>
           </label>
-          <br/>
+            <br/>
           <label>
             Image Link:
             <input name="photo_url" type="text" value={this.state.user.photo_url} onChange={this.handleChange}/>
           </label>
-          <br/>
-          <input type="submit" value="Submit"/>
+            <br/>
+            <input type="submit" value="Submit"/>
         </form>
 
         <p>{this.state.newUser && this.state.newUser.username}</p>
       </div>
-
     )
   }
 }

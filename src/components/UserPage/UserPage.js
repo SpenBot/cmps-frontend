@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-import {
-  Link,
-  Route
-} from 'react-router-dom'
 import './UserPage.css';
 
 
@@ -13,6 +9,7 @@ class UserPage extends Component {
     super(props);
     this.state = {
       username: this.props.user ? this.props.user.username : '',
+
       photo_url: this.props.user ? this.props.user.photo_url : '',
       password: this.props.user ? this.props.user.password : '',
       usernameEdit: this.props.user ? this.props.user.username : '',
@@ -22,7 +19,7 @@ class UserPage extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
-
+    this.handleDelete = this.handleDelete.bind(this);
     }
 
 
@@ -38,11 +35,13 @@ class UserPage extends Component {
 
 
 
+
     handleChange(e) {
       console.log(`Target is = ${e.target}`);
       console.log(`This is e.target.name = ${e.target.name}`);
       this.setState({
           [e.target.name]:e.target.value
+
     }, ()=>console.log(`${this.state}`))
   }
 
@@ -59,8 +58,16 @@ class UserPage extends Component {
     console.log(`Photo_UrlEdit from UserPage Update = ${this.state.photo_urlEdit}`)
     console.log(`PasswordEdit from UserPage Update = ${this.state.passwordEdit}`)
   }
-
-
+  
+     handleDelete(e) {
+      e.preventDefault();
+      axios.delete(`http://localhost:4000/api/users/${this.state.username}/delete`, {
+        username: this.state.username,
+        photo_url: this.state.photo_url
+      })
+      console.log('User Deleted')
+    }
+  
 
 
 
@@ -70,18 +77,14 @@ class UserPage extends Component {
     return (
     <div className="userPage">
 
-
-
-      <h2>Profile</h2>
-
-      <h3> {this.state.username} </h3>
+      <p> {this.state.username} </p>
       <img src={this.state.photo_url} alt='Mug Shot'/>
 
 
-
-
+      <div className="editDelete">
       <form onSubmit={this.handleUpdate}>
-        <p>Edit Your Profile!</p>
+
+        <p id="profile">Profile</p>
         <label>
           Username:
           <input name="usernameEdit" type="text"
@@ -106,12 +109,10 @@ class UserPage extends Component {
           <input type="submit" value="Edit" />
       </form>
 
-
-
-
-
-      <p>Delete</p>
-
+        <button onClick={this.handleDelete}>
+          Delete Profile
+        </button>
+      </div>
 
 
       <br/>
@@ -119,6 +120,5 @@ class UserPage extends Component {
     )
   }
 }
-
 
 export default UserPage;
