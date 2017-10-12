@@ -10,18 +10,18 @@ class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        username: '',
-        photo_url: ''
-      }
+      username: this.props.user ? this.props.user.username : '',
+      photo_url: this.props.user ? this.props.user.photo_url : '',
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
+
+    }
 
     handleChange(e) {
       console.log(e.target);
+      console.log(`This is e.target.name = ${e.target.name}`);
       this.setState({
         user: {
           ...this.state.user,
@@ -38,33 +38,53 @@ class UserPage extends Component {
     })
   }
 
+  componentWillReceiveProps(newProps) {
+    console.log(newProps)
+    this.setState({
+      username: newProps.user.username,
+      photo_url: newProps.user.photo_url
+    })
+  }
+
+
+
 
   render() {
     return (
     <div className="userPage">
 
+
+
       <h2>This is the User Page</h2>
 
 
-      {/* <img src={this.props.user.photo_url} alt='Mug Shot'/> */}
+
+      <p> {this.state.username} </p>
+      <img src={this.state.photo_url} alt='Mug Shot'/>
+
+
 
       <form onSubmit={this.handleSubmit}>
         <p>Sign Up!</p>
         <label>
           Name:
-          <input name="username" type="text" value={this.state.user.username} onChange={this.handleChange} />
+          <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />
         </label>
           <br/>
         <label>
           Image Link:
-          <input name="photo_url" type="text" value={this.state.user.photo_url} onChange={this.handleChange} />
+          <input name="photo_url" type="text" value={this.state.photo_url} onChange={this.handleChange} />
         </label>
         <br/>
           <input type="submit" value="Submit" />
       </form>
 
+
+
       <p>Edit</p>
       <p>Delete</p>
+
+
 
       <br/>
     </div>

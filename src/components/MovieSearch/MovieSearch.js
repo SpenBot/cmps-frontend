@@ -18,7 +18,7 @@ class MovieSearch extends Component {
             {movie.title}
         </option>
        )
-         console.log({moviesList})
+        //  console.log({moviesList})
     })
       return (
         <div>
