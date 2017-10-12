@@ -71,3 +71,18 @@ $ npm start
 
 To contribute to our code, identify bugs, and propose improvements, please
 submit issues to the back-end [here](https://github.com/SpenBot/cmps-backend/issues "cmps-backend issues") and front-end [here](https://github.com/blinkhorn/cmps-frontend/issues "cmps-frontend issues").
+
+##Group Member Roles
+
+Spenser and Melley worked on the back-end and Patrick and Christian worked on
+the front-end when we first started. When Spenser and Melley finished the
+back-end (which includes linking the movie API to the dropdown on the homepage
+and programming the results component),they helped Patrick and Christian with
+the front-end. Much of the time we worked using the driver and navigator
+technique in pairs, trading the coding and overseeing roles after lunch every
+day. After Melley and Spenser finished the back-end, Spenser worked on user
+sign-in functionality. Melley worked on the CSS styling for the site and worked
+on the MovieID. Christian and Patrick programmed the user sidebar along with
+other components that we didn't end up using. Patrick deployed the
+back-end and front-end to Heroku and composed this Readme.Christian worked on
+the delete portion of the CRUD functionality for users.
