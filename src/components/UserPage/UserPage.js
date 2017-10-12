@@ -65,9 +65,6 @@ class UserPage extends Component {
 
 
 
-      <h2>This is the User Page</h2>
-
-
 
       <p> {this.state.username} </p>
       <img src={this.state.photo_url} alt='Mug Shot'/>
@@ -75,7 +72,7 @@ class UserPage extends Component {
 
 
       <form onSubmit={this.handleSubmit}>
-        <p>Sign Up!</p>
+        <p>Profile</p>
         <label>
           Name:
           <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />

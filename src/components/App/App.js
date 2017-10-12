@@ -41,6 +41,7 @@ class App extends Component {
     //    .then((res) => {
     //      this.setState({apiMovies: res.data})
     //    })
+
 }
 
   logOutUser(e) {
