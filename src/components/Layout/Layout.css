@@ -63,5 +63,6 @@ a {
 body {
   background-image: url("http://www.pngmart.com/files/3/Popcorn-Transparent-Background.png");
   background-repeat: no-repeat;
+  background-size: cover;
 
 }
