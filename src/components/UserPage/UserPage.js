@@ -15,9 +15,9 @@ class UserPage extends Component {
       username: this.props.user ? this.props.user.username : '',
       photo_url: this.props.user ? this.props.user.photo_url : '',
       password: this.props.user ? this.props.user.password : '',
-      usernameEdit: '',
-      photo_urlEdit: '',
-      passwordEdit: ''
+      usernameEdit: this.props.user ? this.props.user.username : '',
+      photo_urlEdit: this.props.user ? this.props.user.photo_url : '',
+      passwordEdit: this.props.user ? this.props.user.password : ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,14 +43,14 @@ class UserPage extends Component {
       console.log(`This is e.target.name = ${e.target.name}`);
       this.setState({
           [e.target.name]:e.target.value
-    }, ()=>console.log(`Typy-typy${this.state}`))
+    }, ()=>console.log(`${this.state}`))
   }
 
 
 
   handleUpdate(e) {
     e.preventDefault();
-    axios.put(`https://cmps-backend.herokuapp.com/api/users/${this.state.username}`, {
+    axios.put(`http://localhost:4000/api/users/${this.state.username}`, {
       username: this.state.usernameEdit,
       photo_url: this.state.photo_urlEdit,
       password: this.state.passwordEdit
@@ -85,21 +85,21 @@ class UserPage extends Component {
         <label>
           Username:
           <input name="usernameEdit" type="text"
-            // value={this.state.username}
+            value={this.state.usernameEdit}
             onChange={this.handleChange} />
         </label>
           <br/>
         <label>
           Profile Pic:
           <input name="photo_urlEdit" type="text"
-            // value={this.state.photo_url}
+            value={this.state.photo_urlEdit}
             onChange={this.handleChange} />
         </label>
         <br/>
         <label>
         Password:
         <input name="passwordEdit" type="text"
-          // value={this.state.password}
+          value={this.state.passwordEdit}
           onChange={this.handleChange} />
         </label>
         <br/>
