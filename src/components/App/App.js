@@ -29,7 +29,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-
     new Date()
        console.log(new Date())
        let currentDate = moment(new Date()).format('YYYY-MM-DD')
@@ -39,7 +38,6 @@ class App extends Component {
     //    .then((res) => {
     //      this.setState({apiMovies: res.data})
     //    })
-
 }
 
   logOutUser(e) {
@@ -68,11 +66,8 @@ class App extends Component {
   }
 
   render() {
-
     console.log(`User State in App.js = ${this.state.user.username}`)
-
-
-    return (
+       return (
 
       <Router>
 
