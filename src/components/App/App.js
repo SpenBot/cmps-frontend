@@ -27,18 +27,10 @@ class App extends Component {
       apiMovies: [],
       searchPhrase: null,
     }
-    this.changeTheaterResult = this.changeTheaterResult.bind(this)
-    this.changeMovieId = this.changeMovieId.bind(this)
     this.logOutUser = this.logOutUser.bind(this)
   }
 
   componentDidMount() {
-
-    axios.get('https://localhost:4000/api/theaters').then((res) => {
-      this.setState({theaters: res.data})
-        }).catch((err) => {
-          console.log(err)
-    })
 
     new Date()
        console.log(new Date())
@@ -49,26 +41,7 @@ class App extends Component {
     //    .then((res) => {
     //      this.setState({apiMovies: res.data})
     //    })
-
-    axios.get('https://cmps-backend.herokuapp.com/api/movies')
-       .then((res) => {
-         console.log(res)
-         this.setState({movies: res.data})
-         console.log(this.state.movies)
-       })
-       .catch((err) => {
-         console.log(err)
-     })
-
 }
-
-  changeTheaterResult(theaterResult) {
-    this.setState({theaterResult})
-  }
-
-  changeMovieId(movieId) {
-    this.setState({movieId})
-  }
 
   logOutUser(e) {
     e.preventDefault();

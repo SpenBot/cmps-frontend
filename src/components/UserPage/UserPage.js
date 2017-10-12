@@ -11,11 +11,12 @@ class UserPage extends Component {
     super(props);
     this.state = {
       username: this.props.user ? this.props.user.username : '',
-      photo_url: this.props.user ? this.props.user.photo_url : '',
+      photo_url: this.props.user ? this.props.user.photo_url : ''
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
   }
 
@@ -32,7 +33,7 @@ class UserPage extends Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      axios.post("http://localhost:4000/api/users", {
+      axios.post(`http://localhost:4000/api/users/${this.state.username}`, {
       username: this.state.user.username,
       photo_url: this.state.user.photo_url
       })
@@ -40,9 +41,9 @@ class UserPage extends Component {
 
     handleDelete(e) {
       e.preventDefault();
-      axios.delete("http://localhost:4000/api/users/username", {
-        username: this.state.user.username,
-        photo_url: this.state.user.photo_url
+      axios.delete(`http://localhost:4000/api/users/${this.state.username}/delete`, {
+        username: this.state.username,
+        photo_url: this.state.photo_url
       })
       console.log('User Deleted')
     }
