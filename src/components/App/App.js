@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import axios from "axios";
 import moment from 'moment';
-import TheaterSearch from '../TheaterSearch/TheaterSearch.js';
-import MovieSearch from '../MovieSearch/MovieSearch.js';
+import MovieSearch from '../MovieSearch/MovieSearch.js'
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
 import Layout from '../Layout/Layout.js';
 import UserSidebar from '../UserSidebar/UserSidebar.js';
@@ -31,7 +30,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-
     new Date()
        console.log(new Date())
        let currentDate = moment(new Date()).format('YYYY-MM-DD')
@@ -41,7 +39,6 @@ class App extends Component {
     //    .then((res) => {
     //      this.setState({apiMovies: res.data})
     //    })
-
 }
 
   logOutUser(e) {
@@ -70,11 +67,8 @@ class App extends Component {
   }
 
   render() {
-
     console.log(`User State in App.js = ${this.state.user.username}`)
-
-
-    return (
+       return (
 
       <Router>
 

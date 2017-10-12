@@ -56,51 +56,36 @@ class UserPage extends Component {
     })
   }
 
-
-
-
   render() {
     return (
     <div className="userPage">
-
-
-
-
       <p> {this.state.username} </p>
       <img src={this.state.photo_url} alt='Mug Shot'/>
 
-
-
       <form onSubmit={this.handleSubmit}>
         <p>Profile</p>
-        <label>
-          Name:
-          <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />
-        </label>
-          <br/>
-        <label>
-          Image Link:
-          <input name="photo_url" type="text" value={this.state.photo_url} onChange={this.handleChange} />
-        </label>
-        <br/>
-          <input type="submit" value="Submit" />
+          <label>
+            Name:
+            <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />
+          </label>
+            <br/>
+          <label>
+            Image Link:
+            <input name="photo_url" type="text" value={this.state.photo_url} onChange={this.handleChange} />
+          </label>
+            <br/>
+            <input type="submit" value="Submit" />
       </form>
 
-
-
       <p>Edit</p>
-
       <button onClick={this.handleDelete}>
         Delete Profile
       </button>
-
-
 
       <br/>
     </div>
     )
   }
 }
-
 
 export default UserPage;
