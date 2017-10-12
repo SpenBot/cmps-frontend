@@ -29,7 +29,7 @@ class UserSidebar extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    axios.post("http://cmps-backend.herokuapp.com/api/users", {
+    axios.post("https://cmps-backend.herokuapp.com/api/users", {
       username: this.state.user.username,
       photo_url: this.state.user.photo_url
     }).then(() => {

@@ -49,7 +49,7 @@ class UserPage extends Component {
 
   handleUpdate(e) {
     e.preventDefault();
-    axios.put(`http://cmps-backend.herokuapp.com/api/users/${this.state.username}`, {
+    axios.put(`https://cmps-backend.herokuapp.com/api/users/${this.state.username}`, {
       username: this.state.usernameEdit,
       photo_url: this.state.photo_urlEdit,
       password: this.state.passwordEdit
@@ -61,7 +61,7 @@ class UserPage extends Component {
 
      handleDelete(e) {
       e.preventDefault();
-      axios.delete(`http://cmps-backend.herokuapp.com/api/users/${this.state.username}/delete`, {
+      axios.delete(`https://cmps-backend.herokuapp.com/api/users/${this.state.username}/delete`, {
         username: this.state.username,
         photo_url: this.state.photo_url
       })
