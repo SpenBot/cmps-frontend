@@ -56,16 +56,9 @@ class UserPage extends Component {
     })
   }
 
-
-
-
   render() {
     return (
     <div className="userPage">
-
-
-
-
       <p> {this.state.username} </p>
       <img src={this.state.photo_url} alt='Mug Shot'/>
 
@@ -102,6 +95,5 @@ class UserPage extends Component {
     )
   }
 }
-
 
 export default UserPage;
