@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import axios from "axios";
 import moment from 'moment';
+import MovieSearch from '../MovieSearch/MovieSearch.js'
 import ResultsWindow from '../ResultsWindow/ResultsWindow.js';
 import Layout from '../Layout/Layout.js';
 import UserSidebar from '../UserSidebar/UserSidebar.js';
