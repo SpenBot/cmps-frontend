@@ -20,25 +20,26 @@ class App extends Component {
       movies: [],
       user: {
         username: localStorage.getItem('user'),
-        photo_url: localStorage.getItem('photo')
+        photo_url: localStorage.getItem('photo'),
+        password: localStorage.getItem('password')
       },
       theaterResult: null,
       movieId: null,
       apiMovies: [],
       searchPhrase: null,
     }
-    this.changeTheaterResult = this.changeTheaterResult.bind(this)
-    this.changeMovieId = this.changeMovieId.bind(this)
+    // this.changeTheaterResult = this.changeTheaterResult.bind(this)
+    // this.changeMovieId = this.changeMovieId.bind(this)
     this.logOutUser = this.logOutUser.bind(this)
   }
 
   componentDidMount() {
 
-    axios.get('https://localhost:4000/api/theaters').then((res) => {
-      this.setState({theaters: res.data})
-        }).catch((err) => {
-          console.log(err)
-    })
+    // axios.get('https://localhost:4000/api/theaters').then((res) => {
+    //   this.setState({theaters: res.data})
+    //     }).catch((err) => {
+    //       console.log(err)
+    // })
 
     new Date()
        console.log(new Date())
@@ -50,25 +51,25 @@ class App extends Component {
     //      this.setState({apiMovies: res.data})
     //    })
 
-    axios.get('https://cmps-backend.herokuapp.com/api/movies')
-       .then((res) => {
-         console.log(res)
-         this.setState({movies: res.data})
-         console.log(this.state.movies)
-       })
-       .catch((err) => {
-         console.log(err)
-     })
+    // axios.get('https://cmps-backend.herokuapp.com/api/movies')
+    //    .then((res) => {
+    //      console.log(res)
+    //      this.setState({movies: res.data})
+    //      console.log(this.state.movies)
+    //    })
+    //    .catch((err) => {
+    //      console.log(err)
+    //  })
 
 }
 
-  changeTheaterResult(theaterResult) {
-    this.setState({theaterResult})
-  }
-
-  changeMovieId(movieId) {
-    this.setState({movieId})
-  }
+  // changeTheaterResult(theaterResult) {
+  //   this.setState({theaterResult})
+  // }
+  //
+  // changeMovieId(movieId) {
+  //   this.setState({movieId})
+  // }
 
   logOutUser(e) {
     e.preventDefault();
@@ -85,6 +86,7 @@ class App extends Component {
         this.setState({user: res.data})
         localStorage.setItem("user", res.data.username)
         localStorage.setItem("photo", res.data.photo_url)
+        localStorage.setItem("password", res.data.password)
         console.log(`User ${this.state.user.username} signed in.`)
       })
     }
