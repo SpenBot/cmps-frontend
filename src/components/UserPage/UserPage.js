@@ -70,9 +70,10 @@ class UserPage extends Component {
       <img src={this.state.photo_url} alt='Mug Shot'/>
 
 
-
+      <div className="editDelete">
       <form onSubmit={this.handleSubmit}>
-        <p>Profile</p>
+
+        <p id="profile">Profile</p>
         <label>
           Name:
           <input name="username" type="text" value={this.state.username} onChange={this.handleChange} />
@@ -88,12 +89,12 @@ class UserPage extends Component {
 
 
 
-      <p>Edit</p>
+        <p>Edit</p>
 
-      <button onClick={this.handleDelete}>
-        Delete Profile
-      </button>
-
+        <button onClick={this.handleDelete}>
+          Delete Profile
+        </button>
+      </div>
 
 
       <br/>

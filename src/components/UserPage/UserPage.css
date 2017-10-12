@@ -5,7 +5,21 @@
   text-align: center;
   height: 300px;
   width: 300px;
-  background-color: rgb(19, 42, 52);
+  background-color: rgba(19, 42, 52, 0.5);
   color: white;
   font-family: 'Rye', cursive;
+}
+
+img {
+  max-width: 200px;
+}
+
+#profile {
+  text-align: center;
+}
+
+.editDelete {
+  text-align: left;
+  height: 200px;
+  background-color: rgba(19, 42, 52, 0.5);
 }
