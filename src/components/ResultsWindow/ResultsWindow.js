@@ -27,14 +27,14 @@ class ResultsWindow extends Component {
   componentWillReceiveProps (newProps) {
     let newMovie = this.props.apiMovies.find(movieId => movieId.tmsId === newProps.movieId)
     this.setState({movie: newMovie})
-    console.log(`newMovie = ${newMovie}`)
+    // console.log(`newMovie = ${newMovie}`)
   }
 
 
 
   render() {
-      console.log(`Movie Id = ${this.props.movieId}`)
-      console.log(`Movie state = ${this.state.movie}`)
+      // console.log(`Movie Id = ${this.props.movieId}`)
+      // console.log(`Movie state = ${this.state.movie}`)
 
 
       let theatersOfMovie = ""

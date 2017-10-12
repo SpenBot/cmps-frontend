@@ -18,7 +18,10 @@ class App extends Component {
     this.state = {
       theaters: [],
       movies: [],
-      user: null,
+      user: {
+        username: localStorage.getItem('user'),
+        photo_url: localStorage.getItem('photo')
+      },
       theaterResult: null,
       movieId: null,
       apiMovies: [],
@@ -42,10 +45,10 @@ class App extends Component {
        let currentDate = moment(new Date()).format('YYYY-MM-DD')
        console.log(`Current date is ${currentDate}`)
 
-    axios.get(`http://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne`)
-       .then((res) => {
-         this.setState({apiMovies: res.data})
-       })
+    // axios.get(`http://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne`)
+    //    .then((res) => {
+    //      this.setState({apiMovies: res.data})
+    //    })
 
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
        .then((res) => {
@@ -57,11 +60,6 @@ class App extends Component {
          console.log(err)
      })
 
-     axios.get('https://cmps-backend.herokuapp.com/api/users/MovieGuy999')
-        .then((res) => {
-          this.setState({user: res.data})
-          console.log(`User = ${this.state.user.username}`)
-        })
 }
 
   changeTheaterResult(theaterResult) {
@@ -74,7 +72,9 @@ class App extends Component {
 
   logOutUser(e) {
     e.preventDefault();
-    this.setState({user: null})
+    this.setState({user: ""})
+    localStorage.setItem("user", "")
+    localStorage.setItem("photo", "")
     console.log("User logged out.")
   }
 
@@ -83,6 +83,8 @@ class App extends Component {
     axios.get(`https://cmps-backend.herokuapp.com/api/users/${this.state.searchPhrase}`)
       .then((res) => {
         this.setState({user: res.data})
+        localStorage.setItem("user", res.data.username)
+        localStorage.setItem("photo", res.data.photo_url)
         console.log(`User ${this.state.user.username} signed in.`)
       })
     }
@@ -94,6 +96,9 @@ class App extends Component {
   }
 
   render() {
+
+    console.log(`User State in App.js = ${this.state.user.username}`)
+
 
     return (
 
