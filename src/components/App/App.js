@@ -42,10 +42,10 @@ class App extends Component {
        let currentDate = moment(new Date()).format('YYYY-MM-DD')
        console.log(`Current date is ${currentDate}`)
 
-    axios.get(`http://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne`)
-       .then((res) => {
-         this.setState({apiMovies: res.data})
-       })
+    // axios.get(`http://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne`)
+    //    .then((res) => {
+    //      this.setState({apiMovies: res.data})
+    //    })
 
     axios.get('https://cmps-backend.herokuapp.com/api/movies')
        .then((res) => {

@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 import '../Layout/Layout.css';
+import Particles from 'particlesjs'
 
 
 class Layout extends Component {
-
-
+componentDidMount() {
+  window.onload = function() {
+    Particles.init({
+      selector: '.background', connectParticles: true, sizeVariations: 13, speed: 1,
+    });
+  };
+}
   render() {
       return (
+
         <div id="layout"  className="Layout">
 
         <header className="Layout-header">
@@ -23,8 +30,11 @@ class Layout extends Component {
           Welcome to CMPS, Your theater and movie source for Washington, DC!
         </p>
 
+
         </div>
+
       )
+    
   }
 
 

@@ -7,7 +7,7 @@
 }
 
 .Layout-header {
-  background-color: rgb(129, 0, 5);
+  background-color: rgb(19, 42, 52);
   height: 150px;
   padding: 20px;
   color: white;
@@ -23,6 +23,7 @@
 a {
   margin: 40px;
   color: black;
+  z-index: 1;
 }
 
 .Layout-title {
@@ -56,12 +57,30 @@ a {
 #list {
   font-family: 'Rye', cursive;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.3);
+  /*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
 
 body {
-  background-image: url("http://www.pngmart.com/files/3/Popcorn-Transparent-Background.png");
+  /*background-image: url("http://www.pngmart.com/files/3/Popcorn-Transparent-Background.png");*/
+  background-image: url("https://i.pinimg.com/736x/3d/5c/83/3d5c8355a120474d81d17a7193f9723a--cool-backgrounds-wallpaper-backgrounds.jpg");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+
+}
+
+html
+body {
+  margin: 50;
+  padding: 50;
+}
+
+.background {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
 
 }
