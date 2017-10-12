@@ -18,6 +18,7 @@ class UserPage extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
     handleChange(e) {
@@ -27,16 +28,25 @@ class UserPage extends Component {
           ...this.state.user,
           [e.target.name]:e.target.value
        }
-    }, ()=>console.log(this.state))
-  }
+      }, ()=>console.log(this.state))
+    }
 
     handleSubmit(e) {
-    e.preventDefault();
-    axios.post("http://localhost:4000/api/users", {
+      e.preventDefault();
+      axios.post("http://localhost:4000/api/users", {
       username: this.state.user.username,
       photo_url: this.state.user.photo_url
-    })
-  }
+      })
+    }
+
+    handleDelete(e) {
+      e.preventDefault();
+      axios.delete("http://localhost:4000/api/users/username", {
+        username: this.state.user.username,
+        photo_url: this.state.user.photo_url
+      })
+      console.log('User Deleted')
+    }
 
 
   render() {
@@ -64,7 +74,10 @@ class UserPage extends Component {
       </form>
 
       <p>Edit</p>
-      <p>Delete</p>
+
+      <button onClick={this.handleDelete}>
+        Delete Profile
+      </button>
 
       <br/>
     </div>
