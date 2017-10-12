@@ -17,16 +17,19 @@ class App extends Component {
     this.state = {
       user: {
         username: localStorage.getItem('user'),
-        photo_url: localStorage.getItem('photo')
+        photo_url: localStorage.getItem('photo'),
+        password: localStorage.getItem('password')
       },
       movieId: null,
       apiMovies: [],
       searchPhrase: null
     }
+
     this.logOutUser = this.logOutUser.bind(this)
   }
 
   componentDidMount() {
+
     new Date()
     console.log(new Date())
     let currentDate = moment(new Date()).format('YYYY-MM-DD')
@@ -36,7 +39,9 @@ class App extends Component {
     //    .then((res) => {
     //      this.setState({apiMovies: res.data})
     //    })
+
   }
+
 
   logOutUser(e) {
     e.preventDefault();
@@ -48,13 +53,16 @@ class App extends Component {
 
   signInUser(e) {
     e.preventDefault()
-    axios.get(`https://cmps-backend.herokuapp.com/api/users/${this.state.searchPhrase}`).then((res) => {
-      this.setState({user: res.data})
-      localStorage.setItem("user", res.data.username)
-      localStorage.setItem("photo", res.data.photo_url)
-      console.log(`User ${this.state.user.username} signed in.`)
-    })
-  }
+
+    axios.get(`https://cmps-backend.herokuapp.com/api/users/${this.state.searchPhrase}`)
+      .then((res) => {
+        this.setState({user: res.data})
+        localStorage.setItem("user", res.data.username)
+        localStorage.setItem("photo", res.data.photo_url)
+        localStorage.setItem("password", res.data.password)
+        console.log(`User ${this.state.user.username} signed in.`)
+      })
+    }
 
   handleSearchInput(e) {
     this.setState({searchPhrase: e.target.value})
