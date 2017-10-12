@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import axios from "axios";
 import moment from 'moment';
 import MovieSearch from '../MovieSearch/MovieSearch.js'
@@ -15,13 +15,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      theaters: [],
-      movies: [],
       user: {
         username: localStorage.getItem('user'),
         photo_url: localStorage.getItem('photo')
       },
-      theaterResult: null,
       movieId: null,
       apiMovies: [],
       searchPhrase: null,
@@ -93,32 +90,25 @@ class App extends Component {
                         <MovieSearch changeMovieId={this.changeMovieId} apiMovies={this.state.apiMovies}/>
                         <ResultsWindow theaterResult={this.state.theaterResult} movieId={this.state.movieId} apiMovies={this.state.apiMovies}/>
                         <UserSidebar {...props} user={this.state.user} logOutUser={this.logOutUser}/>
-                      {/* /////////// sign in button ////////////// */}
-                        <br/>
+                            <br/>
                         <h3>Sign In</h3>
-                        <form onSubmit={(e) => this.signInUser(e)}>
-                          <textarea onChange={(e) => this.handleSearchInput(e)}></textarea>
-                          <input type="submit" value="Sign In"/>
-                        </form>
-                        {/* /////////// sign in button ////////////// */}
-
-                        {/* /////////// sign out button ////////////// */}
-                        <br/>
+                          <form onSubmit={(e) => this.signInUser(e)}>
+                            <textarea onChange={(e) => this.handleSearchInput(e)}></textarea>
+                            <input type="submit" value="Sign In"/>
+                          </form>
+                            <br/>
                         <h3>{this.state.user && this.state.user.username}</h3>
-                        <br/>
+                            <br/>
                         <form onSubmit={(e) => this.logOutUser(e)}>
                           <input type="submit" value="Sign Out"/>
                         </form>
-                        {/* /////////// sign out button ////////////// */}
                       </div>
                     )
                 }}
               />
-
             </Switch>
           </div>
         </Router>
-
     );
   }
 }

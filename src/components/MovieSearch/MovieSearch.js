@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
 
 class MovieSearch extends Component {
 
@@ -9,17 +8,15 @@ class MovieSearch extends Component {
   }
 
   render() {
-
     let movies = this.props.apiMovies
-
     const moviesList = movies.map((movie) => {
       return (
         <option id="value" value={movie.tmsId}>
             {movie.title}
         </option>
        )
-        //  console.log({moviesList})
     })
+
       return (
         <div>
 
