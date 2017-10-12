@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
 import axios from "axios";
 import moment from 'moment';
 import MovieSearch from '../MovieSearch/MovieSearch.js'
@@ -8,6 +7,7 @@ import Layout from '../Layout/Layout.js';
 import UserSidebar from '../UserSidebar/UserSidebar.js';
 import UserPage from '../UserPage/UserPage.js';
 import '../App/App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 //main landing page for search
 class App extends Component {
@@ -15,13 +15,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      theaters: [],
-      movies: [],
       user: {
         username: localStorage.getItem('user'),
         photo_url: localStorage.getItem('photo')
       },
-      theaterResult: null,
       movieId: null,
       apiMovies: [],
       searchPhrase: null
@@ -39,7 +36,7 @@ class App extends Component {
     //    .then((res) => {
     //      this.setState({apiMovies: res.data})
     //    })
-}
+  }
 
   logOutUser(e) {
     e.preventDefault();
@@ -65,7 +62,7 @@ class App extends Component {
 
   render() {
     console.log(`User State in App.js = ${this.state.user.username}`)
-       return (
+    return (
 
       <Router>
 

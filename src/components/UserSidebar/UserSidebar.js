@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './UserSidebar.css';
 import axios from 'axios';
-import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
-import UserPage from '../UserPage/UserPage.js'
 
 class UserSidebar extends Component {
   constructor(props) {
