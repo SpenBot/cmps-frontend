@@ -11,6 +11,9 @@ CMPS.
 ## Example
 
 Here are images of CMPS running in the browser:
+![alt text](./public/app-image-0.png "App image")
+![alt text](./public/app-image-1.png "App image — results")
+![alt text](./public/app-image-2.png "App image — user")
 
 ## Features
 
@@ -28,7 +31,7 @@ dependencies.
 
 ## Installation instructions
 
-You can run the project in your browser by going to https://cmps-backend.herokuapp.com/
+You can run the project in your browser by going to https://cmps-frontend.herokuapp.com/
 
 If you want to run the app locally, follow the following instructions:
 
@@ -76,13 +79,13 @@ submit issues to the back-end [here](https://github.com/SpenBot/cmps-backend/iss
 
 Spenser and Melley worked on the back-end and Patrick and Christian worked on
 the front-end when we first started. When Spenser and Melley finished the
-back-end (which includes linking the movie API to the dropdown on the homepage
-and programming the results component),they helped Patrick and Christian with
-the front-end. Much of the time we worked using the driver and navigator
+back-end (which includes linking the movie API to the dropdown on the App page
+and programming the results component), they helped Patrick and Christian with
+the front-end. Much of the time, we worked using the driver and navigator
 technique in pairs, trading the coding and overseeing roles after lunch every
 day. After Melley and Spenser finished the back-end, Spenser worked on user
-sign-in functionality. Melley worked on the CSS styling for the site and worked
-on the MovieID. Christian and Patrick programmed the user sidebar along with
-other components that we didn't end up using. Patrick deployed the
-back-end and front-end to Heroku and composed this Readme.Christian worked on
-the delete portion of the CRUD functionality for users.
+sign-in functionality. Melley and Patrick worked on the CSS styling for the site
+and Melley also worked on the MovieID. Christian and Patrick programmed the user
+sidebar along with other components that we didn't end up using. Patrick
+deployed the back-end and front-end to Heroku and composed this Readme. Christian
+worked on the delete portion of the CRUD functionality for users.
