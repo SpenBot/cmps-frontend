@@ -26,7 +26,18 @@ class App extends Component {
     }
 
     this.logOutUser = this.logOutUser.bind(this)
+    this.changeMovieId = this.changeMovieId.bind(this)
   }
+
+
+  changeMovieId(movieId) {
+   this.setState({movieId})
+  }
+
+
+
+
+
 
   componentDidMount() {
 
@@ -40,7 +51,7 @@ class App extends Component {
          this.setState({apiMovies: res.data})
        })
 
-  }
+     }
 
 
   logOutUser(e) {
@@ -123,4 +134,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
