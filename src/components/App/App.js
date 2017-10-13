@@ -46,7 +46,7 @@ class App extends Component {
     let currentDate = moment(new Date()).format('YYYY-MM-DD')
     console.log(`Current date is ${currentDate}`)
 
-    axios.get(`https://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=z2ud6x8tjayerzhpab34c8ne`)
+    axios.get(`https://data.tmsapi.com/v1.1/movies/showings?startDate=${currentDate}&zip=20005&radius=3&api_key=nhg4dwe7n5rj5xbxfnxms88b`)
        .then((res) => {
          this.setState({apiMovies: res.data})
        })
