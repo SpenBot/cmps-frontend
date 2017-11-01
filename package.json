@@ -18,5 +18,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://SpenBot.github.io/cmps-frontend-spen"
+  "homepage": "https://SpenBot.github.io/cmps-frontend-spen",
+  "devDependencies": {
+    "gh-pages": "^1.0.0"
+  }
 }
