@@ -27,6 +27,7 @@ class ResultsWindow extends Component {
           <div>
           <h4>{showtime.theatre.name}</h4>
           <h4>{showtime.dateTime}</h4>
+          <hr></hr>
           </div>
         )
       })
@@ -34,13 +35,13 @@ class ResultsWindow extends Component {
 
     return (
       <div id='list'>
-        <br/>
+        {/* <br/>
           {this.state.movie && this.state.movie.title}
         <br/>
           {this.state.movie && this.state.movie.releaseYear}
         <br/>
           {this.state.movie && this.state.movie.directors}
-        <br/>
+        <br/> */}
           {theatersOfMovie}
         <br/>
       </div>
