@@ -81,17 +81,15 @@ vl {
 }
 
 .AppWindow {
-  /*margin-top: 70px;
-  margin-left: 500px;*/
   position: relative;
   top: 80px;
-  left: 700px;
+  left: 600px;
   width: 400px;
   height: 250px;
   border: 5px solid white;
   border-radius: 10px;
   background-color: rgb(222, 53, 29);
-  opacity: .86;
+  opacity: .9;
   overflow: scroll;
 }
 
@@ -102,23 +100,3 @@ vl {
 .AppWindow hr {
   width: 350px;
 }
-
-
-
-
-
-
-
-
-/*.App {
-  text-align: center;
-}
-
-.signin {
-  text-align: left;
-  color: white;
-  font-family: 'Rye', cursive;
-  background-color: rgba(19, 42, 52, 0.5);
-  width: 200px;
-  height: 500px;
-}*/
