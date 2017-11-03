@@ -66,18 +66,22 @@ class App extends Component {
               <hr></hr>
             </nav>
 
-            <div className="AppWindow">
-              <p>SELECT A MOVIE TO SEE SHOWTIMES</p>
-              <hr></hr>
-              <MovieSearch
-                changeMovieId={this.changeMovieId}
-                apiMovies={this.state.apiMovies}
-              />
-              <ResultsWindow
-                theaterResult={this.state.theaterResult}
-                movieId={this.state.movieId}
-                apiMovies={this.state.apiMovies}
-              />
+            <div className="subMain">
+
+              <div className="AppWindow">
+                <p>SELECT A MOVIE TO SEE SHOWTIMES</p>
+                <hr></hr>
+                <MovieSearch
+                  changeMovieId={this.changeMovieId}
+                  apiMovies={this.state.apiMovies}
+                />
+                <ResultsWindow
+                  theaterResult={this.state.theaterResult}
+                  movieId={this.state.movieId}
+                  apiMovies={this.state.apiMovies}
+                />
+              </div>
+              
             </div>
 
           </main>
